@@ -18,3 +18,28 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+
+def to_binary(string: str) -> str:
+    """
+    Convert String to numerical binary numbers
+    returns numerical binary string
+        >>>to_binary("test")\n
+        >>>"1110100 1100101 1110011 1110100"
+    """
+    bin_conv = []
+    for c in string:
+        ascii_val = ord(c)
+        binary_val = bin(ascii_val)
+        bin_conv.append(binary_val[2:])
+
+    return ' '.join(bin_conv)
+
+def bin_to_text(string: str) -> str:
+    """
+    Convert Binary Numerical Values back to string
+    returns utf-8 String
+        >>>bin_to_text("1110100 1100101 1110011 1110100")\n
+        >>>'test'
+    """
+    return "".join([chr(int(binary, 2)) for binary in string.split(" ")])
+
