@@ -113,3 +113,19 @@ def decodeMorse(sequence):
     """
     return ' '.join(
         ''.join(MORSE_DECODE_DICT[letter] for letter in word.split(' ')) for word in sequence.strip().split('   '))
+
+
+def is_pangram(str):
+    """
+    Checks if the given string is a pangram or not
+
+    >> is_pangram("The quick, brown fox jumps over the lazy dog!")
+    >> True
+
+    """
+    count = 0
+    for character in range(97, 123):
+        if chr(character) in str or chr(character).upper() in str:
+            count += 1
+    if count == 26: return True
+    return False
