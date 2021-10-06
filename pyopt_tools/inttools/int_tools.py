@@ -17,3 +17,7 @@ def persistence(num):
         string_num = str(result)
         count += 1
     return count
+
+def is_square(n):
+    from math import sqrt
+    return n > -1 and sqrt(n) % 1 == 0
