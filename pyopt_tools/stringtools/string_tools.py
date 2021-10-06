@@ -55,15 +55,6 @@ def revstr(str):
         """
         return str[::-1]
 
-def revint(int):
-        """
-        returns a new reversed int from the given int or string with int
-
-        >> revint(5678)
-        >> 8765
-        """
-        return eval(str(int)[::-1])
-
 
 MORSE_DECODE_DICT = {"-.-.--": "!", ".-..-.": '"', "...-..-": "$", ".-...": "&", ".----.": "\\", "-.--.": "(",
                      "-.--.-": ")", ".-.-.": "+", "--..--": ",", "-....-": "-", ".-.-.-": ".", "-..-.": "/",

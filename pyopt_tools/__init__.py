@@ -20,5 +20,6 @@
 # SOFTWARE.
 
 from stringtools import string_tools
+from inttools import int_tools
 
 
