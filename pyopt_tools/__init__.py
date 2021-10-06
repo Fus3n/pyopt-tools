@@ -19,6 +19,5 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from stringtools import string_tools
-from inttools import int_tools
+from pyopt_tools import stringtools
 

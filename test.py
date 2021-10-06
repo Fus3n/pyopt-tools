@@ -1,3 +1,3 @@
-from pyopt_tools import string_tools
+from pyopt_tools.stringtools import string_tools
 
 print(string_tools.reverse_string("dda"))
