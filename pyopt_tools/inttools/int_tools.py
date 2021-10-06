@@ -1,6 +1,3 @@
-from typing import Any
-
-
 def revint(int):
     """
     returns a new reversed int from the given int or string with int
