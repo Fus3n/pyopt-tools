@@ -56,8 +56,8 @@ def bin_to_text(string: str) -> str:
     """
     Convert Binary Numerical Values back to string
     returns utf-8 String
-        >>>bin_to_text("1110100 1100101 1110011 1110100")\n
-        >>>'test'
+        >>bin_to_text("1110100 1100101 1110011 1110100")\n
+        >>'test'
     """
     return "".join([chr(int(binary, 2)) for binary in string.split(" ")])
 
@@ -66,8 +66,8 @@ def reverse_string(string: str) -> str:
     """
         Returns a new reversed string
 
-        >>>reverse_string("hello")\n
-        >>>'olleh'
+        >>reverse_string("hello")\n
+        >>'olleh'
 
     """
     return string[::-1]
@@ -98,9 +98,7 @@ def encodeMorse(sequence: str) -> str:
 def decodeMorse(sequence: str) -> str:
     """
     Fully Decodes to Morse codes encoded using encodeMorse() to Upper Case Alphabets
-
     //Morse codes encoded using external encoders may raise error//
-
 
     """
     return ' '.join(
@@ -111,8 +109,8 @@ def is_pangram(string: str) -> str:
     """
     Checks if the given string is a pangram or not
 
-    >>>is_pangram("The quick, brown fox jumps over the lazy dog!")\n
-    >>>True
+    >>is_pangram("The quick, brown fox jumps over the lazy dog!")\n
+    >>True
 
     """
     count = 0

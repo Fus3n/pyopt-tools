@@ -4,7 +4,7 @@ def reverse_int(int: int) -> int:
     """
     returns a new reversed int from the given int or string with int
 
-    >> revint(5678)
+    >> reverse_int(5678)
     >> 8765
     """
     return eval(str(int)[::-1])
