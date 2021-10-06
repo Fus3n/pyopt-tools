@@ -19,6 +19,23 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+
+MORSE_DECODE_DICT = {"-.-.--": "!", ".-..-.": '"', "...-..-": "$", ".-...": "&", ".----.": "\\", "-.--.": "(",
+                     "-.--.-": ")", ".-.-.": "+", "--..--": ",", "-....-": "-", ".-.-.-": ".", "-..-.": "/",
+                     "-----": "0", ".----": "1", "..---": "2", "...--": "3", "....-": "4", ".....": "5", "-....": "6",
+                     "--...": "7", "---..": "8", "----.": "9", "---...": ":", "-.-.-.": ";", "-...-": "=",
+                     "..--..": "?", ".--.-.": "@", ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E",
+                     "..-.": "F", "--.": "G", "....": "H", "..": "I", ".---": "J", "-.-": "K", ".-..": "L", "--": "M",
+                     "-.": "N", "---": "O", ".--.": "P", "--.-": "Q", ".-.": "R", "...": "S", "-": "T", "..-": "U",
+                     "...-": "V", ".--": "W", "-..-": "X", "-.--": "Y", "--..": "Z", "..--.-": "_", "...---...": "SOS"}
+MORSE_ENCODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
+                     'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
+                     'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+                     'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
+                     '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--',
+                     '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+
+
 def to_binary(string: str) -> str:
     """
     Convert String to numerical binary numbers
@@ -45,34 +62,29 @@ def bin_to_text(string: str) -> str:
     return "".join([chr(int(binary, 2)) for binary in string.split(" ")])
 
 
-def revstr(str):
-        """
+def reverse_string(string: str) -> str:
+    """
         Returns a new reversed string
 
-        >> reverse("hello")
-        >>olleh
+        >>>reverse_string("hello")\n
+        >>>'olleh'
 
-        """
-        return str[::-1]
-
-
-MORSE_DECODE_DICT = {"-.-.--": "!", ".-..-.": '"', "...-..-": "$", ".-...": "&", ".----.": "\\", "-.--.": "(",
-                     "-.--.-": ")", ".-.-.": "+", "--..--": ",", "-....-": "-", ".-.-.-": ".", "-..-.": "/",
-                     "-----": "0", ".----": "1", "..---": "2", "...--": "3", "....-": "4", ".....": "5", "-....": "6",
-                     "--...": "7", "---..": "8", "----.": "9", "---...": ":", "-.-.-.": ";", "-...-": "=",
-                     "..--..": "?", ".--.-.": "@", ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E",
-                     "..-.": "F", "--.": "G", "....": "H", "..": "I", ".---": "J", "-.-": "K", ".-..": "L", "--": "M",
-                     "-.": "N", "---": "O", ".--.": "P", "--.-": "Q", ".-.": "R", "...": "S", "-": "T", "..-": "U",
-                     "...-": "V", ".--": "W", "-..-": "X", "-.--": "Y", "--..": "Z", "..--.-": "_", "...---...": "SOS"}
-MORSE_ENCODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
-                     'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
-                     'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
-                     'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
-                     '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--',
-                     '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+    """
+    return string[::-1]
 
 
-def encodeMorse(sequence):
+def encodeMorse(sequence: str) -> str:
+    """
+       Encodes the given string to Morse Code
+
+       Morse code is case-insensitive and traditonally Capital Letters are used
+       Lower cases are converted to Upper cases
+
+       Every Character code is seperated by a single space between them
+
+       A space in the sequence is translated as '   ' three spaces
+
+    """
     encoded = ''
     for letter in sequence.upper():
         if letter != ' ':
@@ -81,20 +93,9 @@ def encodeMorse(sequence):
             encoded += '  '
 
     return encoded.strip()
-    """
-    Encodes the given string to Morse Code
-
-    Morse code is case-insensitive and traditonally Capital Letters are used
-    Lower cases are converted to Upper cases
-
-    Every Character code is seperated by a single space between them
-
-    A space in the sequence is translated as '   ' three spaces
-    
-    """
 
 
-def decodeMorse(sequence):
+def decodeMorse(sequence: str) -> str:
     """
     Fully Decodes to Morse codes encoded using encodeMorse() to Upper Case Alphabets
 
@@ -106,17 +107,17 @@ def decodeMorse(sequence):
         ''.join(MORSE_DECODE_DICT[letter] for letter in word.split(' ')) for word in sequence.strip().split('   '))
 
 
-def is_pangram(str):
+def is_pangram(string: str) -> str:
     """
     Checks if the given string is a pangram or not
 
-    >> is_pangram("The quick, brown fox jumps over the lazy dog!")
-    >> True
+    >>>is_pangram("The quick, brown fox jumps over the lazy dog!")\n
+    >>>True
 
     """
     count = 0
     for character in range(97, 123):
-        if chr(character) in str or chr(character).upper() in str:
+        if chr(character) in string or chr(character).upper() in string:
             count += 1
     if count == 26: return True
     return False

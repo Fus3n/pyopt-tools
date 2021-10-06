@@ -1,4 +1,6 @@
-def revint(int):
+from math import sqrt
+
+def reverse_int(int: int) -> int:
     """
     returns a new reversed int from the given int or string with int
 
@@ -7,8 +9,8 @@ def revint(int):
     """
     return eval(str(int)[::-1])
 
-def persistence(num):
-    string_num =str(num)
+def persistence(num: int) -> int:
+    string_num = str(num)
     count: int = 0
     while len(string_num) > 1:
         result = 1
@@ -18,6 +20,5 @@ def persistence(num):
         count += 1
     return count
 
-def is_square(n):
-    from math import sqrt
+def is_square(n: int) -> int:
     return n > -1 and sqrt(n) % 1 == 0
