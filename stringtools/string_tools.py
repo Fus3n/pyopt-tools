@@ -40,8 +40,8 @@ def to_binary(string: str) -> str:
     """
     Convert String to numerical binary numbers
     returns numerical binary string
-        >>>to_binary("test")\n
-        >>>"1110100 1100101 1110011 1110100"
+        >>to_binary("test")\n
+        >>"1110100 1100101 1110011 1110100"
     """
     bin_conv = []
     for c in string:
