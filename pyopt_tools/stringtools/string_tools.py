@@ -45,8 +45,7 @@ def bin_to_text(string: str) -> str:
     return "".join([chr(int(binary, 2)) for binary in string.split(" ")])
 
 
-class Revtool:
-    def revstr(str):
+def revstr(str):
         """
         Returns a new reversed string
 
@@ -56,7 +55,7 @@ class Revtool:
         """
         return str[::-1]
 
-    def revint(int):
+def revint(int):
         """
         returns a new reversed int from the given int or string with int
 
@@ -64,3 +63,53 @@ class Revtool:
         >> 8765
         """
         return eval(str(int)[::-1])
+
+
+MORSE_DECODE_DICT = {"-.-.--": "!", ".-..-.": '"', "...-..-": "$", ".-...": "&", ".----.": "\\", "-.--.": "(",
+                     "-.--.-": ")", ".-.-.": "+", "--..--": ",", "-....-": "-", ".-.-.-": ".", "-..-.": "/",
+                     "-----": "0", ".----": "1", "..---": "2", "...--": "3", "....-": "4", ".....": "5", "-....": "6",
+                     "--...": "7", "---..": "8", "----.": "9", "---...": ":", "-.-.-.": ";", "-...-": "=",
+                     "..--..": "?", ".--.-.": "@", ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E",
+                     "..-.": "F", "--.": "G", "....": "H", "..": "I", ".---": "J", "-.-": "K", ".-..": "L", "--": "M",
+                     "-.": "N", "---": "O", ".--.": "P", "--.-": "Q", ".-.": "R", "...": "S", "-": "T", "..-": "U",
+                     "...-": "V", ".--": "W", "-..-": "X", "-.--": "Y", "--..": "Z", "..--.-": "_", "...---...": "SOS"}
+MORSE_ENCODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
+                     'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
+                     'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+                     'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
+                     '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--',
+                     '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+
+
+def encodeMorse(sequence):
+    encoded = ''
+    for letter in sequence.upper():
+        if letter != ' ':
+            encoded += MORSE_ENCODE_DICT[letter] + ' '
+        else:
+            encoded += '  '
+
+    return encoded.strip()
+    """
+    Encodes the given string to Morse Code
+
+    Morse code is case-insensitive and traditonally Capital Letters are used
+    Lower cases are converted to Upper cases
+
+    Every Character code is seperated by a single space between them
+
+    A space in the sequence is translated as '   ' three spaces
+    
+    """
+
+
+def decodeMorse(sequence):
+    """
+    Fully Decodes to Morse codes encoded using encodeMorse() to Upper Case Alphabets
+
+    //Morse codes encoded using external encoders may raise error//
+
+
+    """
+    return ' '.join(
+        ''.join(MORSE_DECODE_DICT[letter] for letter in word.split(' ')) for word in sequence.strip().split('   '))
