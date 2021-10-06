@@ -34,6 +34,7 @@ def to_binary(string: str) -> str:
 
     return ' '.join(bin_conv)
 
+
 def bin_to_text(string: str) -> str:
     """
     Convert Binary Numerical Values back to string
@@ -43,3 +44,23 @@ def bin_to_text(string: str) -> str:
     """
     return "".join([chr(int(binary, 2)) for binary in string.split(" ")])
 
+
+class Revtool:
+    def revstr(str):
+        """
+        Returns a new reversed string
+
+        >> reverse("hello")
+        >>olleh
+
+        """
+        return str[::-1]
+
+    def revint(int):
+        """
+        returns a new reversed int from the given int or string with int
+
+        >> revint(5678)
+        >> 8765
+        """
+        return eval(str(int)[::-1])
