@@ -119,3 +119,22 @@ def is_pangram(string: str) -> str:
             count += 1
     if count == 26: return True
     return False
+
+
+def split_str(str, maxsplit=1):
+    """
+    Splits characters of a String into Array\
+
+    :param str: Specify a input String
+    :param maxsplit: It is the number of skips in character before splitting, DEFAULT = 1
+    :return: Returns the Array containing elements of characters splitted from the String
+    """
+    txt = ""
+    list = []
+
+    for i in str:
+        txt += i
+        if len(txt) == num:
+            list.append(txt)
+            txt = ''
+    return list
