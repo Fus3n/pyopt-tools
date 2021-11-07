@@ -18,22 +18,24 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+from string import ascii_letters
+from random import sample, randint
 
-
-__MORSE_DECODE_DICT = {"-.-.--": "!", ".-..-.": '"', "...-..-": "$", ".-...": "&", ".----.": "\\", "-.--.": "(",
-                     "-.--.-": ")", ".-.-.": "+", "--..--": ",", "-....-": "-", ".-.-.-": ".", "-..-.": "/",
-                     "-----": "0", ".----": "1", "..---": "2", "...--": "3", "....-": "4", ".....": "5", "-....": "6",
-                     "--...": "7", "---..": "8", "----.": "9", "---...": ":", "-.-.-.": ";", "-...-": "=",
-                     "..--..": "?", ".--.-.": "@", ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E",
-                     "..-.": "F", "--.": "G", "....": "H", "..": "I", ".---": "J", "-.-": "K", ".-..": "L", "--": "M",
-                     "-.": "N", "---": "O", ".--.": "P", "--.-": "Q", ".-.": "R", "...": "S", "-": "T", "..-": "U",
-                     "...-": "V", ".--": "W", "-..-": "X", "-.--": "Y", "--..": "Z", "..--.-": "_", "...---...": "SOS"}
-__MORSE_ENCODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
-                     'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
-                     'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
-                     'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
-                     '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--',
-                     '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
+_MORSE_DECODE_DICT = {"-.-.--": "!", ".-..-.": '"', "...-..-": "$", ".-...": "&", ".----.": "\\", "-.--.": "(",
+                      "-.--.-": ")", ".-.-.": "+", "--..--": ",", "-....-": "-", ".-.-.-": ".", "-..-.": "/",
+                      "-----": "0", ".----": "1", "..---": "2", "...--": "3", "....-": "4", ".....": "5", "-....": "6",
+                      "--...": "7", "---..": "8", "----.": "9", "---...": ":", "-.-.-.": ";", "-...-": "=",
+                      "..--..": "?", ".--.-.": "@", ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E",
+                      "..-.": "F", "--.": "G", "....": "H", "..": "I", ".---": "J", "-.-": "K", ".-..": "L", "--": "M",
+                      "-.": "N", "---": "O", ".--.": "P", "--.-": "Q", ".-.": "R", "...": "S", "-": "T", "..-": "U",
+                      "...-": "V", ".--": "W", "-..-": "X", "-.--": "Y", "--..": "Z", "..--.-": "_",
+                      "...---...": "SOS"}
+_MORSE_ENCODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
+                      'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
+                      'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+                      'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
+                      '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----', ', ': '--..--',
+                      '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'}
 
 
 def to_binary(string: str) -> str:
@@ -92,7 +94,7 @@ def encodeMorse(sequence: str) -> str:
     encoded = ''
     for letter in sequence.upper():
         if letter != ' ':
-            encoded += __MORSE_ENCODE_DICT[letter] + ' '
+            encoded += _MORSE_ENCODE_DICT[letter] + ' '
         else:
             encoded += '  '
 
@@ -110,7 +112,49 @@ def decodeMorse(sequence: str) -> str:
 
     """
     return ' '.join(
-        ''.join(__MORSE_DECODE_DICT[letter] for letter in word.split(' ')) for word in sequence.strip().split('   '))
+        ''.join(_MORSE_DECODE_DICT[letter] for letter in word.split(' ')) for word in sequence.strip().split('   '))
+
+
+def encodeCaesar(sequence: str, shift: int = 1) -> str:
+    """
+    Encodes the given string to Caesar Cipher
+
+    Example:\n
+        >>>encodeCaesar("HELLO WORLD", 1)\n
+        >>>"IFMMP XPSME"
+    """
+    return ''.join(chr(((ord(c) - 65 + shift) % 26) + 65) if 65 <= ord(c) <= 90 else c for c in sequence)
+
+
+def decodeCaesar(sequence: str, shift: int = 1) -> str:
+    """
+    Decodes the given string to Caesar Cipher
+
+    Example:\n
+        >>>decodeCaesar("IFMMP XPSME", 1)\n
+        >>>"HELLO WORLD"
+    """
+    return ''.join(chr(((ord(c) - 65 - shift) % 26) + 65) if 65 <= ord(c) <= 90 else c for c in sequence)
+
+
+
+def split_str(str: str, maxsplit: int = 1) -> list:
+    """
+    Splits characters of a String into Array
+
+    :param str: Specify a input String
+    :param maxsplit: It is the number of skips in character before splitting, DEFAULT = 1
+    :return: Returns the Array containing elements of characters splitted from the String
+    """
+    txt = ""
+    str_list = []
+
+    for i in str:
+        txt += i
+        if len(txt) == maxsplit:
+            str_list.append(txt)
+            txt = ''
+    return str_list
 
 
 def is_pangram(string: str) -> str:
@@ -130,20 +174,141 @@ def is_pangram(string: str) -> str:
     return False
 
 
-def split_str(str: str, maxsplit: int =1) -> list:
+def is_palindrome(string: str) -> bool:
     """
-    Splits characters of a String into Array
+    Checks if the given string is a palindrome or not
 
-    :param str: Specify a input String
-    :param maxsplit: It is the number of skips in character before splitting, DEFAULT = 1
-    :return: Returns the Array containing elements of characters splitted from the String
+    Example:\n
+        >>>is_palindrome("ABA")\n
+        >>>True
+
     """
-    txt = ""
-    str_list = []
+    if string == string[::-1]:
+        return True
+    return False
 
-    for i in str:
-        txt += i
-        if len(txt) == maxsplit:
-            str_list.append(txt)
-            txt = ''
-    return str_list
+
+def is_anagram(str1: str, str2: str) -> bool:
+    """
+    Checks if the given string is an anagram of another string
+
+    Example:\n
+        >>>is_anagram("waterbottle", "erbottlewat")\n
+        >>>True
+
+    """
+    if len(str1) != len(str2):
+        return False
+    return sorted(str1) == sorted(str2)
+
+
+def is_rotation(str1: str, str2: str) -> bool:
+    """
+    Checks if the given string is a rotation of another string
+
+    Example:\n
+        >>>is_rotation("waterbottle", "erbottlewat")\n
+        >>>True
+
+    """
+    if len(str1) != len(str2):
+        return False
+    return str2 in (str1 + str1)
+
+
+def make_n_gram(string: str, n: int) -> list:
+    """
+    Creates n-grams from the given string
+
+    :param string: Specify a input String
+    :param n: Specify the n-gram size
+    :return: Returns the Array containing n-grams
+    """
+    n_grams = []
+    for i in range(len(string) - n + 1):
+        n_grams.append(string[i:i + n])
+    return n_grams
+
+
+def randomize_string(string: str) -> str:
+    """
+    Randomizes the given string
+
+    Example:\n
+        >>>randomize_string("Hello World")\n
+        >>>'rldloHW'
+
+    """
+    return ''.join(sample(string, len(string)))
+
+
+def get_random_color() -> str:
+    """
+    Returns a random color
+
+    Example:\n
+        >>>get_random_color()\n
+        >>>'#ff0000'
+
+    """
+    return '#{:06x}'.format(randint(0, 0xFFFFFF))
+
+
+def get_random_string(length: int) -> str:
+    """
+    Returns a random string of given length
+
+    Example:\n
+        >>>get_random_string(10)\n
+        >>>'qwertzuiop'
+
+    """
+    return ''.join(sample(ascii_letters, length))
+
+
+def count_vowels(string: str) -> int:
+    """
+    Counts the number of vowels in the given string
+
+    Example:\n
+        >>>count_vowels("Hello World")\n
+        >>>3
+
+    """
+    return sum(1 for char in string if char.lower() in 'aeiou')
+
+
+def count_consonants(string: str) -> int:
+    """
+    Counts the number of consonants in the given string
+
+    Example:\n
+        >>>count_consonants("Hello World")\n
+        >>>7
+
+    """
+    return sum(1 for char in string if char.lower() in 'bcdfghjklmnpqrstvwxyz')
+
+
+def count_words(string: str) -> int:
+    """
+    Counts the number of words in the given string
+
+    Example:\n
+        >>>count_words("Hello World")\n
+        >>>2
+
+    """
+    return len(string.split())
+
+
+def count_lines(string: str) -> int:
+    """
+    Counts the number of lines in the given string
+
+    Example:\n
+        >>>count_lines("Hello World")\n
+        >>>1
+
+    """
+    return len(string.splitlines())
