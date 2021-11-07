@@ -20,7 +20,7 @@
 # SOFTWARE.
 
 
-MORSE_DECODE_DICT = {"-.-.--": "!", ".-..-.": '"', "...-..-": "$", ".-...": "&", ".----.": "\\", "-.--.": "(",
+__MORSE_DECODE_DICT = {"-.-.--": "!", ".-..-.": '"', "...-..-": "$", ".-...": "&", ".----.": "\\", "-.--.": "(",
                      "-.--.-": ")", ".-.-.": "+", "--..--": ",", "-....-": "-", ".-.-.-": ".", "-..-.": "/",
                      "-----": "0", ".----": "1", "..---": "2", "...--": "3", "....-": "4", ".....": "5", "-....": "6",
                      "--...": "7", "---..": "8", "----.": "9", "---...": ":", "-.-.-.": ";", "-...-": "=",
@@ -28,7 +28,7 @@ MORSE_DECODE_DICT = {"-.-.--": "!", ".-..-.": '"', "...-..-": "$", ".-...": "&",
                      "..-.": "F", "--.": "G", "....": "H", "..": "I", ".---": "J", "-.-": "K", ".-..": "L", "--": "M",
                      "-.": "N", "---": "O", ".--.": "P", "--.-": "Q", ".-.": "R", "...": "S", "-": "T", "..-": "U",
                      "...-": "V", ".--": "W", "-..-": "X", "-.--": "Y", "--..": "Z", "..--.-": "_", "...---...": "SOS"}
-MORSE_ENCODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
+__MORSE_ENCODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
                      'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
                      'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
                      'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
@@ -40,8 +40,10 @@ def to_binary(string: str) -> str:
     """
     Convert String to numerical binary numbers
     returns numerical binary string
-        >>to_binary("test")\n
-        >>"1110100 1100101 1110011 1110100"
+
+    Example:\n
+        >>>to_binary("test")\n
+        >>>"1110100 1100101 1110011 1110100"
     """
     bin_conv = []
     for c in string:
@@ -56,8 +58,10 @@ def bin_to_text(string: str) -> str:
     """
     Convert Binary Numerical Values back to string
     returns utf-8 String
-        >>bin_to_text("1110100 1100101 1110011 1110100")\n
-        >>'test'
+
+    Example:\n
+        >>>bin_to_text("1110100 1100101 1110011 1110100")\n
+        >>>'test'
     """
     return "".join([chr(int(binary, 2)) for binary in string.split(" ")])
 
@@ -65,9 +69,6 @@ def bin_to_text(string: str) -> str:
 def reverse_string(string: str) -> str:
     """
         Returns a new reversed string
-
-        >>reverse_string("hello")\n
-        >>'olleh'
 
     """
     return string[::-1]
@@ -84,11 +85,14 @@ def encodeMorse(sequence: str) -> str:
 
        A space in the sequence is translated as '   ' three spaces
 
+    Example:\n
+        >>>encodeMorse("HELLO WORLD")\n
+        >>>".... . .-.. .-.. ---   .-- --- .-. .-.. -.."
     """
     encoded = ''
     for letter in sequence.upper():
         if letter != ' ':
-            encoded += MORSE_ENCODE_DICT[letter] + ' '
+            encoded += __MORSE_ENCODE_DICT[letter] + ' '
         else:
             encoded += '  '
 
@@ -100,17 +104,22 @@ def decodeMorse(sequence: str) -> str:
     Fully Decodes to Morse codes encoded using encodeMorse() to Upper Case Alphabets
     //Morse codes encoded using external encoders may raise error//
 
+    Example:\n
+        >>>decodeMorse(".... . .-.. .-.. ---   .-- --- .-. .-.. -..")\n
+        >>>"HELLO WORLD"
+
     """
     return ' '.join(
-        ''.join(MORSE_DECODE_DICT[letter] for letter in word.split(' ')) for word in sequence.strip().split('   '))
+        ''.join(__MORSE_DECODE_DICT[letter] for letter in word.split(' ')) for word in sequence.strip().split('   '))
 
 
 def is_pangram(string: str) -> str:
     """
     Checks if the given string is a pangram or not
 
-    >>is_pangram("The quick, brown fox jumps over the lazy dog!")\n
-    >>True
+    Example:\n
+        >>>is_pangram("The quick, brown fox jumps over the lazy dog!")\n
+        >>>True
 
     """
     count = 0
@@ -121,20 +130,20 @@ def is_pangram(string: str) -> str:
     return False
 
 
-def split_str(str, maxsplit=1):
+def split_str(str: str, maxsplit: int =1) -> list:
     """
-    Splits characters of a String into Array\
+    Splits characters of a String into Array
 
     :param str: Specify a input String
     :param maxsplit: It is the number of skips in character before splitting, DEFAULT = 1
     :return: Returns the Array containing elements of characters splitted from the String
     """
     txt = ""
-    list = []
+    str_list = []
 
     for i in str:
         txt += i
-        if len(txt) == num:
-            list.append(txt)
+        if len(txt) == maxsplit:
+            str_list.append(txt)
             txt = ''
-    return list
+    return str_list

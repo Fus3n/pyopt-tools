@@ -20,5 +20,4 @@
 # SOFTWARE.
 
 
-from pyopt_tools import string_tools
-from pyopt_tools import int_tools
+from pyopt_tools import *

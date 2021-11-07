@@ -1,4 +1,7 @@
-from pyopt_tools import string_tools, int_tools
+from pyopt_tools import string_tools
+from pyopt_tools import int_tools
 
-print(string_tools.reverse_string("dda"))
-print(int_tools.reverse_int(1234))
+
+print(string_tools.split_str("Hello World"))
+
+
