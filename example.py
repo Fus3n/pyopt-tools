@@ -41,15 +41,17 @@ print("lerp", math_tools.lerp(0, 10, 0.5))
 print("clamp", math_tools.clamp(0, 10, -1))
 print("clamp01", math_tools.clamp01(10))
 
-# demo get distence between two points using Vec2
+# pyvec
 print("\n")
-print("--"*10 + "Vec2", "--"*10)
-v1 = Vec2(1, 1)
-v2 = Vec2(2, 2)
-v3 = Vec3(1, 1, 1)
-print(v3)
-
-
-
-
-
+print("--"*10 + "pyvec", "--"*10)
+print("Vec2", Vec2(1, 2))
+print("Vec3", Vec3(1, 2, 3))
+print("Vec2.dot", Vec2(1, 2).dot(Vec2(3, 4)))
+print("Vec3.cross", Vec3.cross(Vec3(1, 2, 3), Vec3(3, 4, 5)))
+print("Vec3.angle_between", Vec3(1, 2, 3).angle_between(Vec3(3, 4, 5)))
+print("Vec3.angle", Vec3.angle(Vec3(1, 2, 3), Vec3(3, 4, 5)))
+print("Vec3.normalize", Vec3(1, 2, 3).normalize())
+print("Vec3.length", Vec3(1, 2, 3).length())
+print("Vec3.length_squared", Vec3(1, 2, 3).length_sqr())
+print("Vec3.distance", Vec3(1, 2, 3).distance(Vec3(3, 4, 5)))
+print("Vec3.reflect", Vec3(1, 2, 3).reflect(Vec3(3, 4, 5)))

@@ -22,11 +22,27 @@ class Vec2:
 
     def scale(self, other: "Vec2"):
         """
-        Returns a new vector scaled by the given value.
-        :param other: The value to scale by.
+        Returns the scaled vector.
+        :param other: The scaling vector.
         :return: The scaled vector.
         """
-        return Vec2(self.x * other, self.y * other)
+        return Vec2(self.x * other.x, self.y * other.y)
+
+    def reflect(self, normal):
+        """
+        Returns the reflected vector.
+        :param normal: The normal vector.
+        :return: The reflected vector.
+        """
+        return self - 2 * self.dot(normal) * normal
+
+    def angle_between(self, other):
+        """
+        Returns the angle between two vectors.
+        :param other: The other vector.
+        :return: The angle.
+        """
+        return acos(self.dot(other) / (self.length() * other.length()))
 
     @property
     def normalize(self):
@@ -34,7 +50,7 @@ class Vec2:
         Returns a normalized vector.
         :return: The normalized vector.
         """
-        return self / self.magnitude()
+        return self / self.length()
 
     def dot(self, other):
         """
@@ -43,18 +59,18 @@ class Vec2:
         :return: The dot product.
         """
         return self.x * other.x + self.y * other.y
-    @property
-    def magnitude(self):
+
+    def length(self):
         """
-        Returns the magnitude of the vector.
+        Returns the length of the vector.
         :return: The magnitude.
         """
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
-    @property
-    def sqr_magnitude(self):
+
+    def length_sqr(self):
         """
-        Returns the squared magnitude of the vector.
+        Returns the squared length of the vector.
         :return: The squared magnitude.
         """
         return self.x ** 2 + self.y ** 2
@@ -67,7 +83,7 @@ class Vec2:
         :param b: The second vector.
         :return: The angle.
         """
-        return acos(a.dot(b) / (a.magnitude() * b.magnitude()))
+        return acos(a.dot(b) / (a.length() * b.length()))
 
     @staticmethod
     def zero():
@@ -263,7 +279,6 @@ class Vec2:
         return self.x != 0 or self.y != 0
 
 
-
 # Vector3
 class Vec3:
     def __init__(self, x=0, y=0, z=0):
@@ -271,7 +286,7 @@ class Vec3:
         self.y = y
         self.z = z
 
-    def __int__(self, other):
+    def __int__(self, other: "Vec3"):
         self.x = other.x
         self.y = other.y
         self.z = other.z
@@ -292,13 +307,28 @@ class Vec3:
         """
         return Vec3(self.x * other, self.y * other, self.z * other)
 
-    @property
+    def reflect(self, other: "Vec3"):
+        """
+        Returns the reflected vector.
+        :param other: The normal vector.
+        :return: The reflected vector.
+        """
+        return self - other * 2 * self.dot(other)
+
+    def angle_between(self, other: "Vec3"):
+        """
+        Returns the angle between two vectors.
+        :param other: The other vector.
+        :return: The angle.
+        """
+        return acos(self.dot(other) / (self.length() * other.length()))
+
     def normalize(self):
         """
         Returns the normalized vector.
         :return: The normalized vector.
         """
-        return self / self.magnitude()
+        return self / self.length()
 
     def dot(self, other: "Vec3"):
         """
@@ -308,21 +338,22 @@ class Vec3:
         """
         return self.x * other.x + self.y * other.y + self.z * other.z
 
-    @property
-    def magnitude(self):
+    def length(self):
         """
-        Returns the magnitude of the vector.
-        :return: The magnitude.
+        Returns the length of the vector.
+        :return: The length.
         """
         return (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5
 
-    @property
-    def sqr_magnitude(self):
+
+    def length_sqr(self):
         """
-        Returns the squared magnitude of the vector.
-        :return: The squared magnitude.
+        Returns the length squared of the vector.
+        :return: The length squared.
         """
         return self.x ** 2 + self.y ** 2 + self.z ** 2
+
+
 
     def linear_lerp(self, other: "Vec3", t):
         """
@@ -407,7 +438,7 @@ class Vec3:
         :param b: The second vector.
         :return: The angle.
         """
-        return acos(a.normalize.dot(b.normalize))
+        return acos(a.dot(b) / (a.length() * b.length()))
 
     @staticmethod
     def max(a: "Vec3", b: "Vec3"):
@@ -531,7 +562,3 @@ class Vec3:
 
     def __nonzero__(self):
         return self.x != 0 or self.y != 0 or self.z != 0
-
-
-
-
