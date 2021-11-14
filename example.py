@@ -1,5 +1,6 @@
 from pyopt_tools import string_tools
-from pyopt_tools import int_tools
+from pyopt_tools import math_tools
+from pyopt_tools.pyvec import Vec2, Vec3
 
 # String Tools
 print("--"*10 + "String Tools", "--"*10)
@@ -29,16 +30,25 @@ print("\n")
 
 # Int Tools
 print("--"*10 + "Int Tools", "--"*10)
-print("reverse_int", int_tools.reverse_int(123))
-print("persistence", int_tools.persistence(1234))
-print("is_prime", int_tools.is_prime(6))
-print("is_triangular", int_tools.is_triangular(6))
-print("is_square", int_tools.is_square(6))
-print("is_pentagonal", int_tools.is_pentagonal(6))
-print("is_hexagonal", int_tools.is_hexagonal(5))
-print("lerp", int_tools.lerp(0, 10, 0.5))
-print("clamp", int_tools.clamp(0, 10, -1))
-print("clamp01", int_tools.clamp01(10))
+print("reverse_int", math_tools.reverse_int(123))
+print("persistence", math_tools.persistence(1234))
+print("is_prime", math_tools.is_prime(6))
+print("is_triangular", math_tools.is_triangular(6))
+print("is_square", math_tools.is_square(6))
+print("is_pentagonal", math_tools.is_pentagonal(6))
+print("is_hexagonal", math_tools.is_hexagonal(5))
+print("lerp", math_tools.lerp(0, 10, 0.5))
+print("clamp", math_tools.clamp(0, 10, -1))
+print("clamp01", math_tools.clamp01(10))
+
+# demo get distence between two points using Vec2
+print("\n")
+print("--"*10 + "Vec2", "--"*10)
+v1 = Vec2(1, 1)
+v2 = Vec2(2, 2)
+v3 = Vec3(1, 1, 1)
+print(v3)
+
 
 
 
