@@ -66,7 +66,6 @@ print("listools.remove_duplicates",
       listools.remove_duplicates(test_list))
 print("listools.remove_duplicates_sort",
       listools.remove_duplicates_sort(test_list))
-test_list = [2, "hello", 1, 3, 3, 3, 2.2, 3, 3, 3, True, 4, 3, 3, 3, "hello", False]
 
 print("listools.sort_list", listools.sort_list([2, 3, 2, 1, "string1", "string2", "string3",  3.3, 2.2], (str, int, float), sort_elements=True))
 print("listools.sort_list", listools.sort_list([2, 3, 2, 1, "string1", "string2", "string3",  3.3, 2.2], (str, int, float), sort_elements=False)) # sort_elements = False is default
