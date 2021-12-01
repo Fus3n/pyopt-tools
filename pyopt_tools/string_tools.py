@@ -137,10 +137,9 @@ def decodeCaesar(sequence: str, shift: int = 1) -> str:
     return ''.join(chr(((ord(c) - 65 - shift) % 26) + 65) if 65 <= ord(c) <= 90 else c for c in sequence)
 
 
-
 def split_str(str: str, maxsplit: int = 1) -> list:
     """
-    Splits characters of a String into Array
+    Splits characters of a String into List
 
     :param str: Specify a input String
     :param maxsplit: It is the number of skips in character before splitting, DEFAULT = 1
@@ -290,18 +289,6 @@ def count_consonants(string: str) -> int:
     return sum(1 for char in string if char.lower() in 'bcdfghjklmnpqrstvwxyz')
 
 
-def count_words(string: str) -> int:
-    """
-    Counts the number of words in the given string
-
-    Example:\n
-        >>>count_words("Hello World")\n
-        >>>2
-
-    """
-    return len(string.split())
-
-
 def count_lines(string: str) -> int:
     """
     Counts the number of lines in the given string
@@ -312,3 +299,4 @@ def count_lines(string: str) -> int:
 
     """
     return len(string.splitlines())
+

@@ -171,7 +171,7 @@ class Vec2:
         """
         return Vec2(min(a.x, b.x), min(a.y, b.y))
 
-    def linear_lerp(self, other: "Vec2", t):
+    def lerp(self, other: "Vec2", t):
         """
         Returns a vector between two vectors.
         :param other: The other vector.
@@ -355,7 +355,7 @@ class Vec3:
 
 
 
-    def linear_lerp(self, other: "Vec3", t):
+    def lerp(self, other: "Vec3", t):
         """
         Returns the linear interpolated vector.
         :param other: The other vector.
