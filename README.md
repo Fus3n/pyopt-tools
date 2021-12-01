@@ -51,3 +51,5 @@ print("listools.remove_duplicates_sort",
       listools.remove_duplicates_sort(test_list))
 print("listools.sort_list", listools.sort_list([2, 3, 2, 1, "string1", "string2", "string3",  3.3, 2.2], (str, int, float), sort_elements=True)) # sort list by types and in which order also option to sort each element in the list
 ```
+
+### Full example in [example file]("https://github.com/Fus3n/pyopt-tools/blob/main/example.py")
