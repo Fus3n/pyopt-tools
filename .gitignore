@@ -1,3 +1,4 @@
 /dist/
 /build/
 /pyopt_tools.egg-info/
+/setup.py
