@@ -3,6 +3,7 @@ from pyopt_tools import math_tools
 from pyopt_tools.pyvec import Vec2, Vec3
 from pyopt_tools import listools
 from pyopt_tools import file_tools
+
 # String Tools
 print("--" * 10 + "String Tools", "--" * 10)
 print("Split str", string_tools.split_str("Hello World", 2))
@@ -67,8 +68,12 @@ print("listools.remove_duplicates",
 print("listools.remove_duplicates_sort",
       listools.remove_duplicates_sort(test_list))
 
-print("listools.sort_list", listools.sort_list([2, 3, 2, 1, "string1", "string2", "string3",  3.3, 2.2], (str, int, float), sort_elements=True))
-print("listools.sort_list", listools.sort_list([2, 3, 2, 1, "string1", "string2", "string3",  3.3, 2.2], (str, int, float), sort_elements=False)) # sort_elements = False is default
+print("listools.sort_list",
+      listools.sort_list([2, 3, 2, 1, "string1", "string2", "string3", 3.3, 2.2], (str, int, float),
+                         sort_elements=True))
+print("listools.sort_list",
+      listools.sort_list([2, 3, 2, 1, "string1", "string2", "string3", 3.3, 2.2], (str, int, float),
+                         sort_elements=False))  # sort_elements = False is default
 
 # File tools
 print("\n")
@@ -76,13 +81,7 @@ print("--" * 10 + "File Tools", "--" * 10)
 print("file_tools.get_size", file_tools.get_size("pyopt_tools/string_tools.py"))
 print("file_tools.get_size", file_tools.get_size("pyopt_tools/string_tools.py", "bytes"))
 # find string in multiple files in the given folder
-result = file_tools.find_in_files("F:/Python Random Scripts/", "fusen",["py","cup"])
+result = file_tools.find_in_files("F:/Python Random Scripts/", "test string", ["py", "cup"])
 for res in result:
     filename, line, string = res
     print("file_tools.find_in_files", repr(filename), line, repr(string))
-
-
-
-
-
-
