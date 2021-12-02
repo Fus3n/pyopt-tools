@@ -81,7 +81,7 @@ print("--" * 10 + "File Tools", "--" * 10)
 print("file_tools.get_size", file_tools.get_size("pyopt_tools/string_tools.py"))
 print("file_tools.get_size", file_tools.get_size("pyopt_tools/string_tools.py", "bytes"))
 # find string in multiple files in the given folder
-result = file_tools.find_in_files("F:/Python Random Scripts/", "test string", ["py", "cup"])
+result = file_tools.find_in_files("F:/Python Random Scripts/", "test string", ["py", "cup", "txt"])
 for res in result:
     filename, line, string = res
     print("file_tools.find_in_files", repr(filename), line, repr(string))
