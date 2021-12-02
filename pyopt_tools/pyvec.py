@@ -1,4 +1,3 @@
-import math
 from math import floor, ceil, trunc, acos
 
 
@@ -66,7 +65,6 @@ class Vec2:
         :return: The magnitude.
         """
         return (self.x ** 2 + self.y ** 2) ** 0.5
-
 
     def length_sqr(self):
         """
@@ -345,15 +343,12 @@ class Vec3:
         """
         return (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5
 
-
     def length_sqr(self):
         """
         Returns the length squared of the vector.
         :return: The length squared.
         """
         return self.x ** 2 + self.y ** 2 + self.z ** 2
-
-
 
     def lerp(self, other: "Vec3", t):
         """

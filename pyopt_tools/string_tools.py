@@ -300,3 +300,4 @@ def count_lines(string: str) -> int:
     """
     return len(string.splitlines())
 
+

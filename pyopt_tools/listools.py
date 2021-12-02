@@ -1,6 +1,3 @@
-# listools.py filled with helpful function to work with lists and make coding easier
-
-
 def remove_duplicates(list1: list) -> list:
     """
     Removes duplicates from a list
@@ -27,9 +24,9 @@ def remove_duplicates_sort(list1: list) -> list:
     return list(set(list1))
 
 
-def sort_list(list1: list, from_to_types: tuple, sort_elements: bool = False) -> list:
+def sort_list(list1: list, from_to_types: (tuple, list), sort_elements: bool = False) -> list:
     """
-    Sorts a list for multiple types from a to z
+    Sorts a list for multiple types also sorts by elements if sort_elements is True
     :param sort_elements: whether to sort the elements of the list or just sort by type (sort by type is default)
     :param list1: list to sort
     :param from_to_types: tuple or list with the type of the list elements to sort by
@@ -42,10 +39,6 @@ def sort_list(list1: list, from_to_types: tuple, sort_elements: bool = False) ->
             >>> sort_list(test_list, (str, int, float), sort_elements=True)
             >>> ['string1', 'string2', 'string3', 1, 2, 2, 3, 2.2, 3.3]
     """
-
-    # This is a little bigger than others, but it's the easiest way I could think of
-    # i will update the code once I upgrade my python skills to level 10 max
-
     end_list = []
     return_list = []
     curr_idx = 0
