@@ -17,6 +17,7 @@ from pyopt_tools import listools
 from pyopt_tools import string_tools
 from pyopt_tools import math_tools
 from pyopt_tools.pyvec import Vec2, Vec3
+from pyopt_tools import file_tools
 
 ## string tools
 print("Split str", string_tools.split_str("Hello World", 2))
@@ -50,6 +51,11 @@ print("listools.remove_duplicates",
 print("listools.remove_duplicates_sort",
       listools.remove_duplicates_sort(test_list))
 print("listools.sort_list", listools.sort_list([2, 3, 2, 1, "string1", "string2", "string3",  3.3, 2.2], (str, int, float), sort_elements=True)) # sort list by types and in which order also option to sort each element in the list
+# find string in multiple files in the given folder
+result = file_tools.find_in_files("F:/Important Folder/", "test string", ["py", "cup", "txt"])
+for res in result:
+    filename, line, string = res
+    print("file_tools.find_in_files", repr(filename), line, repr(string))
 ```
 
 ### Full example in [example file]("https://github.com/Fus3n/pyopt-tools/blob/main/example.py")
