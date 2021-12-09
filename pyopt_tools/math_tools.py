@@ -28,6 +28,7 @@ def reverse_int(num: (int, str)) -> int:
     Example:\n
         >>> reverse_int(5678)\n
         >>> 8765
+
     """
     return int(str(num)[::-1])
 

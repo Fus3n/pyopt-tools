@@ -85,3 +85,4 @@ result = file_tools.find_in_files("F:/Python Random Scripts/", "test string", ["
 for res in result:
     filename, line, string = res
     print("file_tools.find_in_files", repr(filename), line, repr(string))
+
