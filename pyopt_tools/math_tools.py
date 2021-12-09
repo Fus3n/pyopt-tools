@@ -21,23 +21,22 @@
 from math import sqrt
 
 
-def reverse_int(int: int) -> int:
+def reverse_int(num: (int, str)) -> int:
     """
     returns a new reversed int from the given int or string with int
-
 
     Example:\n
         >>> reverse_int(5678)\n
         >>> 8765
     """
-    return eval(str(int)[::-1])
+    return int(str(num)[::-1])
 
 
 def persistence(num: int) -> int:
     """
     returns the persistence of a number
 
-    :param num: the number to calculate the persistence of
+    param num: the number to calculate the persistence of
     :return: the persistence of the number
     """
     string_num = str(num)
@@ -45,7 +44,7 @@ def persistence(num: int) -> int:
     while len(string_num) > 1:
         result = 1
         for i in string_num:
-            result *= eval(i)
+            result *= int(i)
         string_num = str(result)
         count += 1
     return count
@@ -61,7 +60,7 @@ def is_square(n: int) -> bool:
         >>> is_square(5)
         >>> False
     """
-    return n > -1 and sqrt(n) % 1 == 0
+    return int(sqrt(n)) ** 2 == n
 
 
 def is_hexagonal(n: int) -> bool:
