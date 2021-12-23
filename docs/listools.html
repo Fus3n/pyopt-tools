@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>pyopt_tools.listools API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pyopt_tools.listools</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def remove_duplicates(list1: list) -&gt; list:
+    &#34;&#34;&#34;
+    Removes duplicates from a list
+    :param list1: list to remove duplicates from
+    :return: list with duplicates removed
+
+        Example:
+            &gt;&gt;&gt; remove_duplicates([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4])
+            &gt;&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    &#34;&#34;&#34;
+    return list(dict.fromkeys(list1))
+
+
+def remove_duplicates_sort(list1: list) -&gt; list:
+    &#34;&#34;&#34;
+    Removes duplicates from a list with sorted elements also works with strings and numbers
+    :param list1: list to remove duplicates from
+    :return: list with duplicates removed
+
+        Example:
+            &gt;&gt;&gt; remove_duplicates_sort([3, 1, 2 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4])
+            &gt;&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    &#34;&#34;&#34;
+    return list(set(list1))
+
+
+def sort_list(list1: list, from_to_types: (tuple, list), sort_elements: bool = False) -&gt; list:
+    &#34;&#34;&#34;
+    Sorts a list for multiple types also sorts by elements if sort_elements is True
+
+    warning: if there is a list in the list, that list will be sorted by type &#39;list&#39; if type not specified it will be
+    in the last position
+
+    :param sort_elements: whether to sort the elements of the list or just sort by type (sort by type is default)
+    :param list1: list to sort
+    :param from_to_types: tuple or list with the type of the list elements to sort by
+    :return: sorted list
+
+        Example:
+            &gt;&gt;&gt; test_list = [2, 3, 2, 1, &#34;string1&#34;, &#34;string2&#34;, &#34;string3&#34;,  3.3, 2.2]
+            &gt;&gt;&gt; sort_list(test_list, (str, int, float))
+            &gt;&gt;&gt; [&#39;string1&#39;, &#39;string2&#39;, &#39;string3&#39;, 2, 3, 2, 1, 3.3, 2.2]
+            &gt;&gt;&gt; sort_list(test_list, (str, int, float), sort_elements=True)
+            &gt;&gt;&gt; [&#39;string1&#39;, &#39;string2&#39;, &#39;string3&#39;, 1, 2, 2, 3, 2.2, 3.3]
+    &#34;&#34;&#34;
+    end_list: list = []
+    return_list = []
+    curr_idx = 0
+    types_separated_list = []
+    if sort_elements:
+        for types in from_to_types:
+            types_item = []
+            for item in list1:
+                if types == type(item):
+                    types_item.append(item)
+            types_separated_list.append(types_item)
+        sorted_list = []
+        for item in types_separated_list:
+            sorted_list.append(sorted(item))
+        for item in sorted_list:
+            for element in item:
+                return_list.append(element)
+    else:
+        for types in from_to_types:
+            for item in list1:
+                if types == type(item):
+                    return_list.insert(curr_idx, item)
+                    curr_idx += 1
+    for i in list1:
+        if type(i) not in from_to_types:
+            end_list.append(i)
+
+    return return_list + end_list
+
+
+def subdivide_by_type(list1: list, from_to_types: (tuple, list)) -&gt; list:
+    &#34;&#34;&#34;
+    Subdivides a list by types
+
+    :param list1: list to subdivide
+    :param from_to_types: tuple or list with the type of the list elements to subdivide by
+    :return: list with the subdivided list
+
+        Example:
+            &gt;&gt;&gt; test_list = [2, 3, 2, 1, &#34;string1&#34;, &#34;string2&#34;, &#34;string3&#34;,  3.3, 2.2]
+            &gt;&gt;&gt; subdivide_by_type(test_list, (str, int, float))
+            &gt;&gt;&gt; [[&#39;string1&#39;, &#39;string2&#39;, &#39;string3&#39;], [2, 3, 2, 1], [3.3, 2.2]]
+    &#34;&#34;&#34;
+    return_list = []
+    for types in from_to_types:
+        types_item = []
+        for item in list1:
+            if types == type(item):
+                types_item.append(item)
+        return_list.append(types_item)
+    return return_list</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="pyopt_tools.listools.remove_duplicates"><code class="name flex">
+<span>def <span class="ident">remove_duplicates</span></span>(<span>list1: list) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Removes duplicates from a list
+:param list1: list to remove duplicates from
+:return: list with duplicates removed</p>
+<pre><code>Example:
+    &gt;&gt;&gt; remove_duplicates([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4])
+    &gt;&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def remove_duplicates(list1: list) -&gt; list:
+    &#34;&#34;&#34;
+    Removes duplicates from a list
+    :param list1: list to remove duplicates from
+    :return: list with duplicates removed
+
+        Example:
+            &gt;&gt;&gt; remove_duplicates([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4])
+            &gt;&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    &#34;&#34;&#34;
+    return list(dict.fromkeys(list1))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.listools.remove_duplicates_sort"><code class="name flex">
+<span>def <span class="ident">remove_duplicates_sort</span></span>(<span>list1: list) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Removes duplicates from a list with sorted elements also works with strings and numbers
+:param list1: list to remove duplicates from
+:return: list with duplicates removed</p>
+<pre><code>Example:
+    &gt;&gt;&gt; remove_duplicates_sort([3, 1, 2 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4])
+    &gt;&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def remove_duplicates_sort(list1: list) -&gt; list:
+    &#34;&#34;&#34;
+    Removes duplicates from a list with sorted elements also works with strings and numbers
+    :param list1: list to remove duplicates from
+    :return: list with duplicates removed
+
+        Example:
+            &gt;&gt;&gt; remove_duplicates_sort([3, 1, 2 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4])
+            &gt;&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    &#34;&#34;&#34;
+    return list(set(list1))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.listools.sort_list"><code class="name flex">
+<span>def <span class="ident">sort_list</span></span>(<span>list1: list, from_to_types: (<class 'tuple'>, <class 'list'>), sort_elements: bool = False) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sorts a list for multiple types also sorts by elements if sort_elements is True</p>
+<p>warning: if there is a list in the list, that list will be sorted by type 'list' if type not specified it will be
+in the last position</p>
+<p>:param sort_elements: whether to sort the elements of the list or just sort by type (sort by type is default)
+:param list1: list to sort
+:param from_to_types: tuple or list with the type of the list elements to sort by
+:return: sorted list</p>
+<pre><code>Example:
+    &gt;&gt;&gt; test_list = [2, 3, 2, 1, "string1", "string2", "string3",  3.3, 2.2]
+    &gt;&gt;&gt; sort_list(test_list, (str, int, float))
+    &gt;&gt;&gt; ['string1', 'string2', 'string3', 2, 3, 2, 1, 3.3, 2.2]
+    &gt;&gt;&gt; sort_list(test_list, (str, int, float), sort_elements=True)
+    &gt;&gt;&gt; ['string1', 'string2', 'string3', 1, 2, 2, 3, 2.2, 3.3]
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sort_list(list1: list, from_to_types: (tuple, list), sort_elements: bool = False) -&gt; list:
+    &#34;&#34;&#34;
+    Sorts a list for multiple types also sorts by elements if sort_elements is True
+
+    warning: if there is a list in the list, that list will be sorted by type &#39;list&#39; if type not specified it will be
+    in the last position
+
+    :param sort_elements: whether to sort the elements of the list or just sort by type (sort by type is default)
+    :param list1: list to sort
+    :param from_to_types: tuple or list with the type of the list elements to sort by
+    :return: sorted list
+
+        Example:
+            &gt;&gt;&gt; test_list = [2, 3, 2, 1, &#34;string1&#34;, &#34;string2&#34;, &#34;string3&#34;,  3.3, 2.2]
+            &gt;&gt;&gt; sort_list(test_list, (str, int, float))
+            &gt;&gt;&gt; [&#39;string1&#39;, &#39;string2&#39;, &#39;string3&#39;, 2, 3, 2, 1, 3.3, 2.2]
+            &gt;&gt;&gt; sort_list(test_list, (str, int, float), sort_elements=True)
+            &gt;&gt;&gt; [&#39;string1&#39;, &#39;string2&#39;, &#39;string3&#39;, 1, 2, 2, 3, 2.2, 3.3]
+    &#34;&#34;&#34;
+    end_list: list = []
+    return_list = []
+    curr_idx = 0
+    types_separated_list = []
+    if sort_elements:
+        for types in from_to_types:
+            types_item = []
+            for item in list1:
+                if types == type(item):
+                    types_item.append(item)
+            types_separated_list.append(types_item)
+        sorted_list = []
+        for item in types_separated_list:
+            sorted_list.append(sorted(item))
+        for item in sorted_list:
+            for element in item:
+                return_list.append(element)
+    else:
+        for types in from_to_types:
+            for item in list1:
+                if types == type(item):
+                    return_list.insert(curr_idx, item)
+                    curr_idx += 1
+    for i in list1:
+        if type(i) not in from_to_types:
+            end_list.append(i)
+
+    return return_list + end_list</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.listools.subdivide_by_type"><code class="name flex">
+<span>def <span class="ident">subdivide_by_type</span></span>(<span>list1: list, from_to_types: (<class 'tuple'>, <class 'list'>)) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Subdivides a list by types</p>
+<p>:param list1: list to subdivide
+:param from_to_types: tuple or list with the type of the list elements to subdivide by
+:return: list with the subdivided list</p>
+<pre><code>Example:
+    &gt;&gt;&gt; test_list = [2, 3, 2, 1, "string1", "string2", "string3",  3.3, 2.2]
+    &gt;&gt;&gt; subdivide_by_type(test_list, (str, int, float))
+    &gt;&gt;&gt; [['string1', 'string2', 'string3'], [2, 3, 2, 1], [3.3, 2.2]]
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def subdivide_by_type(list1: list, from_to_types: (tuple, list)) -&gt; list:
+    &#34;&#34;&#34;
+    Subdivides a list by types
+
+    :param list1: list to subdivide
+    :param from_to_types: tuple or list with the type of the list elements to subdivide by
+    :return: list with the subdivided list
+
+        Example:
+            &gt;&gt;&gt; test_list = [2, 3, 2, 1, &#34;string1&#34;, &#34;string2&#34;, &#34;string3&#34;,  3.3, 2.2]
+            &gt;&gt;&gt; subdivide_by_type(test_list, (str, int, float))
+            &gt;&gt;&gt; [[&#39;string1&#39;, &#39;string2&#39;, &#39;string3&#39;], [2, 3, 2, 1], [3.3, 2.2]]
+    &#34;&#34;&#34;
+    return_list = []
+    for types in from_to_types:
+        types_item = []
+        for item in list1:
+            if types == type(item):
+                types_item.append(item)
+        return_list.append(types_item)
+    return return_list</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="pyopt_tools" href="index.html">pyopt_tools</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="pyopt_tools.listools.remove_duplicates" href="#pyopt_tools.listools.remove_duplicates">remove_duplicates</a></code></li>
+<li><code><a title="pyopt_tools.listools.remove_duplicates_sort" href="#pyopt_tools.listools.remove_duplicates_sort">remove_duplicates_sort</a></code></li>
+<li><code><a title="pyopt_tools.listools.sort_list" href="#pyopt_tools.listools.sort_list">sort_list</a></code></li>
+<li><code><a title="pyopt_tools.listools.subdivide_by_type" href="#pyopt_tools.listools.subdivide_by_type">subdivide_by_type</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

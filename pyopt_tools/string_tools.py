@@ -42,10 +42,11 @@ def to_binary(string: str) -> str:
     """
     Convert String to numerical binary numbers
     returns numerical binary string
+    :param string: String to convert
 
-    Example:\n
-        >>>to_binary("test")\n
-        >>>"1110100 1100101 1110011 1110100"
+    Example:
+        >>> to_binary("test")
+        >>> "1110100 1100101 1110011 1110100"
     """
     bin_conv = []
     for c in string:
@@ -60,17 +61,26 @@ def bin_to_text(string: str) -> str:
     """
     Convert Binary Numerical Values back to string
     returns utf-8 String
+    :param string: Binary String
+    :return: str
 
-    Example:\n
-        >>>bin_to_text("1110100 1100101 1110011 1110100")\n
-        >>>'test'
+    Example:
+        >>> bin_to_text("1110100 1100101 1110011 1110100")
+        >>> 'test'
     """
     return "".join([chr(int(binary, 2)) for binary in string.split(" ")])
 
 
 def reverse_string(string: str) -> str:
     """
-        Returns a new reversed string
+    Returns a new reversed string
+    :param string: String to reverse
+    :return: str
+
+    Example:
+        >>> reverse_string("test")
+        >>> "tset"
+
 
     """
     return string[::-1]
@@ -86,10 +96,12 @@ def encodeMorse(sequence: str) -> str:
        Every Character code is seperated by a single space between them
 
        A space in the sequence is translated as '   ' three spaces
+    :param sequence: String to encode
+    :return: str
 
-    Example:\n
-        >>>encodeMorse("HELLO WORLD")\n
-        >>>".... . .-.. .-.. ---   .-- --- .-. .-.. -.."
+    Example:
+        >>> encodeMorse("HELLO WORLD")
+        >>> ".... . .-.. .-.. ---   .-- --- .-. .-.. -.."
     """
     encoded = ''
     for letter in sequence.upper():
@@ -105,10 +117,12 @@ def decodeMorse(sequence: str) -> str:
     """
     Fully Decodes to Morse codes encoded using encodeMorse() to Upper Case Alphabets
     //Morse codes encoded using external encoders may raise error//
+    :param sequence: String to decode
+    :return: str
 
-    Example:\n
-        >>>decodeMorse(".... . .-.. .-.. ---   .-- --- .-. .-.. -..")\n
-        >>>"HELLO WORLD"
+    Example:
+        >>> decodeMorse(".... . .-.. .-.. ---   .-- --- .-. .-.. -..")
+        >>> "HELLO WORLD"
 
     """
     return ' '.join(
@@ -118,10 +132,12 @@ def decodeMorse(sequence: str) -> str:
 def encodeCaesar(sequence: str, shift: int = 1) -> str:
     """
     Encodes the given string to Caesar Cipher
+    :param sequence: String to encode
+    :param shift: Shift value
 
-    Example:\n
-        >>>encodeCaesar("HELLO WORLD", 1)\n
-        >>>"IFMMP XPSME"
+    Example:
+        >>> encodeCaesar("HELLO WORLD", 1)
+        >>> "IFMMP XPSME"
     """
     return ''.join(chr(((ord(c) - 65 + shift) % 26) + 65) if 65 <= ord(c) <= 90 else c for c in sequence)
 
@@ -129,26 +145,31 @@ def encodeCaesar(sequence: str, shift: int = 1) -> str:
 def decodeCaesar(sequence: str, shift: int = 1) -> str:
     """
     Decodes the given string to Caesar Cipher
+    :param sequence: String to decode
+    :param shift: Shift value
 
-    Example:\n
-        >>>decodeCaesar("IFMMP XPSME", 1)\n
-        >>>"HELLO WORLD"
+    Example:
+        >>> decodeCaesar("IFMMP XPSME", 1)
+        >>> "HELLO WORLD"
     """
     return ''.join(chr(((ord(c) - 65 - shift) % 26) + 65) if 65 <= ord(c) <= 90 else c for c in sequence)
 
 
-def split_str(str: str, maxsplit: int = 1) -> list:
+def split_str(string: str, maxsplit: int = 1) -> list:
     """
-    Splits characters of a String into List
-
-    :param str: Specify a input String
+    Splits characters of a String into List of Strings
+    :param string: String to split
     :param maxsplit: It is the number of skips in character before splitting, DEFAULT = 1
     :return: Returns the Array containing elements of characters splitted from the String
+
+    Example:
+        >>> split_str("HELLO WORLD", 2)
+        >>> ['He', 'll', 'o ', 'Wo', 'rl']
+
     """
     txt = ""
     str_list = []
-
-    for i in str:
+    for i in string:
         txt += i
         if len(txt) == maxsplit:
             str_list.append(txt)
@@ -156,13 +177,15 @@ def split_str(str: str, maxsplit: int = 1) -> list:
     return str_list
 
 
-def is_pangram(string: str) -> str:
+def is_pangram(string: str) -> bool:
     """
     Checks if the given string is a pangram or not
+    :param string: String to check
+    :return: bool
 
-    Example:\n
-        >>>is_pangram("The quick, brown fox jumps over the lazy dog!")\n
-        >>>True
+    Example:
+        >>> is_pangram("The quick, brown fox jumps over the lazy dog!")
+        >>> True
 
     """
     count = 0
@@ -176,10 +199,12 @@ def is_pangram(string: str) -> str:
 def is_palindrome(string: str) -> bool:
     """
     Checks if the given string is a palindrome or not
+    :param string: String to check
+    :return: bool
 
-    Example:\n
-        >>>is_palindrome("ABA")\n
-        >>>True
+    Example:
+        >>> is_palindrome("ABA")\n
+        >>> True
 
     """
     if string == string[::-1]:
@@ -190,10 +215,13 @@ def is_palindrome(string: str) -> bool:
 def is_anagram(str1: str, str2: str) -> bool:
     """
     Checks if the given string is an anagram of another string
+    :param str1: String to check
+    :param str2: String to check
+    :return: bool
 
-    Example:\n
-        >>>is_anagram("waterbottle", "erbottlewat")\n
-        >>>True
+    Example:
+        >>> is_anagram("waterbottle", "erbottlewat")
+        >>> True
 
     """
     if len(str1) != len(str2):
@@ -204,10 +232,13 @@ def is_anagram(str1: str, str2: str) -> bool:
 def is_rotation(str1: str, str2: str) -> bool:
     """
     Checks if the given string is a rotation of another string
+    :param str1: String to check
+    :param str2: String to check
+    :return: bool
 
-    Example:\n
-        >>>is_rotation("waterbottle", "erbottlewat")\n
-        >>>True
+    Example:
+        >>> is_rotation("waterbottle", "erbottlewat")
+        >>> True
 
     """
     if len(str1) != len(str2):
@@ -222,6 +253,11 @@ def make_n_gram(string: str, n: int) -> list:
     :param string: Specify a input String
     :param n: Specify the n-gram size
     :return: Returns the Array containing n-grams
+
+    Example:
+        >>> make_n_gram("Hello world", 2)
+        >>> ['He', 'el', 'll', 'lo', 'o ', ' w', 'wo', 'or', 'rl', 'ld']
+
     """
     n_grams = []
     for i in range(len(string) - n + 1):
@@ -232,10 +268,12 @@ def make_n_gram(string: str, n: int) -> list:
 def randomize_string(string: str) -> str:
     """
     Randomizes the given string
+    :param string: String to randomize
+    :return: str
 
-    Example:\n
-        >>>randomize_string("Hello World")\n
-        >>>'rldloHW'
+    Example:
+        >>> randomize_string("Hello World")
+        >>> 'rldloHW'
 
     """
     return ''.join(sample(string, len(string)))
@@ -243,11 +281,13 @@ def randomize_string(string: str) -> str:
 
 def get_random_color() -> str:
     """
-    Returns a random color
+    Returns a random hex color
+    :return: str
 
-    Example:\n
-        >>>get_random_color()\n
-        >>>'#ff0000'
+
+    Example:
+        >>> get_random_color()
+        >>> '#ff0000'
 
     """
     return '#{:06x}'.format(randint(0, 0xFFFFFF))
@@ -256,10 +296,12 @@ def get_random_color() -> str:
 def get_random_string(length: int) -> str:
     """
     Returns a random string of given length
+    :param length: Length of the string
+    :return: str
 
-    Example:\n
-        >>>get_random_string(10)\n
-        >>>'qwertzuiop'
+    Example:
+        >>> get_random_string(10)
+        >>> 'qwertzuiop'
 
     """
     return ''.join(sample(ascii_letters, length))
@@ -268,10 +310,12 @@ def get_random_string(length: int) -> str:
 def count_vowels(string: str) -> int:
     """
     Counts the number of vowels in the given string
+    :param string: String to count
+    :return: int
 
-    Example:\n
-        >>>count_vowels("Hello World")\n
-        >>>3
+    Example:
+        >>> count_vowels("Hello World")
+        >>> 3
 
     """
     return sum(1 for char in string if char.lower() in 'aeiou')
@@ -280,10 +324,12 @@ def count_vowels(string: str) -> int:
 def count_consonants(string: str) -> int:
     """
     Counts the number of consonants in the given string
+    :param string: String to count
+    :return: int
 
-    Example:\n
-        >>>count_consonants("Hello World")\n
-        >>>7
+    Example:
+        >>> count_consonants("Hello World")
+        >>> 7
 
     """
     return sum(1 for char in string if char.lower() in 'bcdfghjklmnpqrstvwxyz')
@@ -292,10 +338,12 @@ def count_consonants(string: str) -> int:
 def count_lines(string: str) -> int:
     """
     Counts the number of lines in the given string
+    :param string: String to count
+    :return: int
 
-    Example:\n
-        >>>count_lines("Hello World")\n
-        >>>1
+    Example:
+        >>> count_lines("Hello World")
+        >>> 1
 
     """
     return len(string.splitlines())

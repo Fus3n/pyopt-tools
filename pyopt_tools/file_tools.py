@@ -5,8 +5,8 @@ import os
 def get_size(file_path: str, size_in="") -> str:
     """
     Returns file size in gb/mb/kb/bytes
-    file_path: path to the file
-    size_in: gb/mb/kb/bytes (if not set default would be its original size)
+    :param  file_path: path to the file
+    :param  size_in: gb/mb/kb/bytes (if not set default would be its original size)
     :return: file size in gb/mb/kb/bytes
 
         Example:
@@ -48,11 +48,10 @@ def get_size(file_path: str, size_in="") -> str:
 def find_in_files(folder_path: str, search_string: str, file_types: list = None, case_sensitive: bool = False) -> list:
     """
     Returns a list of files that contains the given string and the line number and also the entire line that contains.
-
-    folder_path: path to the folder
-    search_string: string to search for
-    file_types: file types to target (optional)
-    case_sensitive: if True will search case-sensitive
+    :param folder_path: path to the folder
+    :param search_string: string to search for
+    :param file_types file_types to target (optional)
+    :param case_sensitive: if True will search case-sensitive
     :return: list of files that contains the given string and the line number and also the entire line that contains
 
         Example:

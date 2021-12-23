@@ -1,31 +1,12 @@
-# MIT License
-# Copyright (c) 2021 FUSEN
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 from math import sqrt
 
 
 def reverse_int(num: (int, str)) -> int:
     """
     returns a new reversed int from the given int or string with int
+    :param num the number to reverse
 
-    Example:\n
+    Example:
         >>> reverse_int(5678)\n
         >>> 8765
 
@@ -35,10 +16,14 @@ def reverse_int(num: (int, str)) -> int:
 
 def persistence(num: int) -> int:
     """
-    returns the persistence of a number
+    returns the persistence of a number\
+    :param num: the number to check
+    :param num: the number to calculate the persistence of
 
-    param num: the number to calculate the persistence of
-    :return: the persistence of the number
+    Example:
+        >>> persistence(1234)
+        >>> 2
+
     """
     string_num = str(num)
     count: int = 0
@@ -54,8 +39,9 @@ def persistence(num: int) -> int:
 def is_square(n: int) -> bool:
     """
     returns True if n is a perfect square, False otherwise
+    :param n: the number to check
 
-    Example:\n
+    Example:
         >>> is_square(4)
         >>> True
         >>> is_square(5)
@@ -67,8 +53,9 @@ def is_square(n: int) -> bool:
 def is_hexagonal(n: int) -> bool:
     """
     returns True if n is a hexagonal number, False otherwise
+    :param n: the number to check
 
-    Example:\n
+    Example:
         >>> is_hexagonal(6)
         >>> True
         >>> is_hexagonal(5)
@@ -80,8 +67,9 @@ def is_hexagonal(n: int) -> bool:
 def is_triangular(n: int) -> bool:
     """
     returns True if n is a triangular number, False otherwise
+    :param n: the number to check
 
-    Example:\n
+    Example:
         >>> is_triangular(6)
         >>> True
         >>> is_triangular(5)
@@ -93,8 +81,9 @@ def is_triangular(n: int) -> bool:
 def is_pentagonal(n: int) -> bool:
     """
     returns True if n is a pentagonal number, False otherwise
+    :param n: the number to check
 
-    Example:\n
+    Example:
         >>> is_pentagonal(5)
         >>> True
         >>> is_pentagonal(6)
@@ -106,8 +95,9 @@ def is_pentagonal(n: int) -> bool:
 def is_prime(n: int) -> bool:
     """
     returns True if n is a prime number, False otherwise
+    :param n: the number to check
 
-    Example:\n
+    Example:
         >>> is_prime(5)
         >>> True
         >>> is_prime(6)
@@ -124,8 +114,11 @@ def is_prime(n: int) -> bool:
 def lerp(a: float, b: float, t: float) -> float:
     """
     returns a linear interpolation between a and b at t
+    :param a: the first value
+    :param b: the second value
+    :param t: the interpolation value
 
-    Example:\n
+    Example:
         >>> lerp(0, 1, 0.5)
         >>> 0.5
 
@@ -136,8 +129,11 @@ def lerp(a: float, b: float, t: float) -> float:
 def clamp(value: float, n_min: float, n_max: float) -> float:
     """
     returns a clamped value between min and max
+    :param value: the value to clamp
+    :param n_min: the minimum value
+    :param n_max: the maximum value
 
-    Example:\n
+    Example:
         >>> clamp(12, 0, 10)
         >>> 10
     """
@@ -147,9 +143,34 @@ def clamp(value: float, n_min: float, n_max: float) -> float:
 def clamp01(value: float) -> float:
     """
     returns a clamped value between 0 and 1
+    :param value: the value to clamp
 
-    Example:\n
+    Example:
         >>> clamp01(12)
         >>> 1
     """
     return clamp(value, 0, 1)
+
+
+def prime_factors(num: int) -> list:
+    """
+    returns a list of prime factors of a number
+    :param num: the number to get the prime factors of
+    :return: list of prime factors
+
+    Example:
+        >>> prime_factors(12)
+        >>> [2, 2, 3]
+
+    """
+    factors = []
+    i = 2
+    while i * i <= num:
+        if num % i:
+            i += 1
+        else:
+            num //= i
+            factors.append(i)
+    if num > 1:
+        factors.append(num)
+    return factors

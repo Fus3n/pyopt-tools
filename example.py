@@ -10,7 +10,7 @@ print("Split str", string_tools.split_str("Hello World", 2))
 print("Randomize String", string_tools.randomize_string("Hello world"))
 print("Count Vowels", string_tools.count_vowels("Hello world"))
 print("Count Consonants", string_tools.count_consonants("Hello world"))
-print("Cout lines", string_tools.count_lines("Hello world"))
+print("Count lines", string_tools.count_lines("Hello world"))
 print("Reverse String", string_tools.reverse_string("Hello world"))
 print("is palindrome", string_tools.is_palindrome("ABA"))
 print("is_pangram", string_tools.is_pangram("The quick brown fox jumps over the lazy dog"))
@@ -40,6 +40,7 @@ print("is_hexagonal", math_tools.is_hexagonal(5))
 print("lerp", math_tools.lerp(0, 10, 0.5))
 print("clamp", math_tools.clamp(0, 10, -1))
 print("clamp01", math_tools.clamp01(10))
+print("prime_factors", math_tools.prime_factors(12))
 
 # pyvec # Vec2 and Vec3 contains all same functions
 print("\n")
@@ -74,6 +75,7 @@ print("listools.sort_list",
 print("listools.sort_list",
       listools.sort_list([2, 3, 2, 1, "string1", "string2", "string3", 3.3, 2.2], (str, int, float),
                          sort_elements=False))  # sort_elements = False is default
+print("listools.sum_of_squares", listools.subdivide_by_type([1, 2, 3, "hello", 2.3, "world", "hello"], (int, float, str))) # if type not specified but list contains it that type of value will be excluded
 
 # File tools
 print("\n")
