@@ -1,3 +1,8 @@
+"""
+Contains All list manipulation functions. Like sorting, removing duplicates, etc.
+"""
+
+
 def remove_duplicates(list1: list) -> list:
     """
     Removes duplicates from a list
@@ -94,6 +99,3 @@ def subdivide_by_type(list1: list, from_to_types: (tuple, list)) -> list:
                 types_item.append(item)
         return_list.append(types_item)
     return return_list
-
-
-

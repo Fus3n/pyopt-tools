@@ -3,6 +3,8 @@ from pyopt_tools import math_tools
 from pyopt_tools.pyvec import Vec2, Vec3
 from pyopt_tools import listools
 from pyopt_tools import file_tools
+from pyopt_tools.colors import Color
+
 
 # String Tools
 print("--" * 10 + "String Tools", "--" * 10)
@@ -75,7 +77,8 @@ print("listools.sort_list",
 print("listools.sort_list",
       listools.sort_list([2, 3, 2, 1, "string1", "string2", "string3", 3.3, 2.2], (str, int, float),
                          sort_elements=False))  # sort_elements = False is default
-print("listools.sum_of_squares", listools.subdivide_by_type([1, 2, 3, "hello", 2.3, "world", "hello"], (int, float, str))) # if type not specified but list contains it that type of value will be excluded
+print("listools.subdivide_by_type", listools.subdivide_by_type([1, 2, 3, "hello", 2.3, "world", "hello"], (
+    int, float, str)))  # if type not specified but list contains it that type of value will be excluded
 
 # File tools
 print("\n")
@@ -87,4 +90,21 @@ result = file_tools.find_in_files("F:/Python Random Scripts/", "test string", ["
 for res in result:
     filename, line, string = res
     print("file_tools.find_in_files", repr(filename), line, repr(string))
+
+# Colors
+print("\n")
+print("--" * 10 + "Colors", "--" * 10)
+color = Color(Color.PaleGreen)  # Color.LightBlue is tuple every static color is a tuple
+print("Color", color)
+print("Color.to_hex", color.to_hex())
+print("Color.to_rgb", color.to_rgb())
+print("Color.to_hsv", color.to_hsv())
+print("Color.to_cmyk", color.to_cmyk())
+print("Color.to_kivy",
+      color.to_kivy(alpha=1))  # Convert to kivy color format (r, g, b, a) in range of 0-1 (alpha is optional)
+print("Color red", color[0])
+print("Color green", color[1])
+print("Color blue", color[2])
+print("Color MATHS!", Color(Color.Red) + Color(Color.Green))
+
 

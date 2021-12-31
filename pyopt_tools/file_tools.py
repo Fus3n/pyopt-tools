@@ -1,4 +1,6 @@
-# file_tools.py has useful functions for working with files
+"""
+file_tools contains functions for working with files.
+"""
 import os
 
 
@@ -85,6 +87,3 @@ def find_in_files(folder_path: str, search_string: str, file_types: list = None,
                                 if search_string.lower() in line.lower():
                                     files.append([file, i + 1, line])
     return files
-
-
-

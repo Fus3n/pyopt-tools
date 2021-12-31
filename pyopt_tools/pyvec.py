@@ -1,3 +1,8 @@
+"""
+pyvec contains Vector2 and Vector3 classes.
+with all useful vector operations.
+"""
+
 from math import floor, ceil, trunc, acos
 
 

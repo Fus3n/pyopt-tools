@@ -1,3 +1,6 @@
+"""
+Some math functions.
+"""
 from math import sqrt
 
 
