@@ -94,7 +94,9 @@ for res in result:
 # Colors
 print("\n")
 print("--" * 10 + "Colors", "--" * 10)
+
 color = Color(Color.PaleGreen)  # Color.LightBlue is tuple every static color is a tuple
+#another way: Color("FF0000")
 print("Color", color)
 print("Color.to_hex", color.to_hex())
 print("Color.to_rgb", color.to_rgb())
@@ -106,5 +108,7 @@ print("Color red", color[0])
 print("Color green", color[1])
 print("Color blue", color[2])
 print("Color MATHS!", Color(Color.Red) + Color(Color.Green))
+print("Color.hex_to_rgb", Color.hex_to_rgb("#ffffff"))
+
 
 

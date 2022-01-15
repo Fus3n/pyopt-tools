@@ -60,23 +60,24 @@ class Color:
     def __init__(self, color: (tuple, "Color") = None):
         """
         Create a color from rbg or another color object
-        :param color: tuple of rbg values or Color object
+        :param color: tuple of rbg values or hex value or Color object
 
         Example:
             >>> clr1 =Color((255, 0, 0))
             >>> clr1
             >>> Color(255, 0, 0)
-            >>> clr2 = Color(clr2.to_rgb())
+            >>> clr2 = Color("#ff0000")
             >>> clr2
             >>> Color(255, 0, 0)
-            >>> clr3 = Color(clr2)
-            >>> clr3
-            >>> Color(255, 0, 0)
+            >>> clr2.to_hex()
+            >>> "#ff0000"
         """
         if isinstance(color, tuple):
             self.r, self.g, self.b = color
         elif isinstance(color, Color):
             self.r, self.g, self.b = color.to_rgb()
+        elif isinstance(color, str):
+            self.r, self.g, self.b = Color.hex_to_rgb(color)
         elif color is None:
             self.r, self.g, self.b = 255, 255, 255
         else:
@@ -103,6 +104,20 @@ class Color:
             return self.b
         else:
             raise IndexError(f"Index must be 0, 1 or 2, not {item}")
+
+    @staticmethod
+    def hex_to_rgb(hex_str: str) -> Tuple[int, int, int]:
+        """
+        Convert hexadecimal to rgb
+
+        :param hex_str: hexadecimal string
+        :return: rgb tuple
+        """
+        if hex_str[0] == "#":
+            hex_str = hex_str.lstrip("#")
+            return int(hex_str[0:2], 16), int(hex_str[2:4], 16), int(hex_str[4:6], 16)
+        else:
+            raise ValueError(f"{hex_str} is not a valid hexadecimal")
 
     def to_hex(self) -> str:
         """
@@ -168,4 +183,3 @@ class Color:
         :return: kivy color tuple
         """
         return self.r / 255, self.g / 255, self.b / 255, alpha
-
