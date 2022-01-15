@@ -96,23 +96,24 @@ class Color:
     def __init__(self, color: (tuple, &#34;Color&#34;) = None):
         &#34;&#34;&#34;
         Create a color from rbg or another color object
-        :param color: tuple of rbg values or Color object
+        :param color: tuple of rbg values or hex value or Color object
 
         Example:
             &gt;&gt;&gt; clr1 =Color((255, 0, 0))
             &gt;&gt;&gt; clr1
             &gt;&gt;&gt; Color(255, 0, 0)
-            &gt;&gt;&gt; clr2 = Color(clr2.to_rgb())
+            &gt;&gt;&gt; clr2 = Color(&#34;#ff0000&#34;)
             &gt;&gt;&gt; clr2
             &gt;&gt;&gt; Color(255, 0, 0)
-            &gt;&gt;&gt; clr3 = Color(clr2)
-            &gt;&gt;&gt; clr3
-            &gt;&gt;&gt; Color(255, 0, 0)
+            &gt;&gt;&gt; clr2.to_hex()
+            &gt;&gt;&gt; &#34;#ff0000&#34;
         &#34;&#34;&#34;
         if isinstance(color, tuple):
             self.r, self.g, self.b = color
         elif isinstance(color, Color):
             self.r, self.g, self.b = color.to_rgb()
+        elif isinstance(color, str):
+            self.r, self.g, self.b = Color.hex_to_rgb(color)
         elif color is None:
             self.r, self.g, self.b = 255, 255, 255
         else:
@@ -139,6 +140,20 @@ class Color:
             return self.b
         else:
             raise IndexError(f&#34;Index must be 0, 1 or 2, not {item}&#34;)
+
+    @staticmethod
+    def hex_to_rgb(hex_str: str) -&gt; Tuple[int, int, int]:
+        &#34;&#34;&#34;
+        Convert hexadecimal to rgb
+
+        :param hex_str: hexadecimal string
+        :return: rgb tuple
+        &#34;&#34;&#34;
+        if hex_str[0] == &#34;#&#34;:
+            hex_str = hex_str.lstrip(&#34;#&#34;)
+            return int(hex_str[0:2], 16), int(hex_str[2:4], 16), int(hex_str[4:6], 16)
+        else:
+            raise ValueError(f&#34;{hex_str} is not a valid hexadecimal&#34;)
 
     def to_hex(self) -&gt; str:
         &#34;&#34;&#34;
@@ -222,17 +237,16 @@ class Color:
 <dd>
 <div class="desc"><p>Color values in RGB</p>
 <p>Create a color from rbg or another color object
-:param color: tuple of rbg values or Color object</p>
+:param color: tuple of rbg values or hex value or Color object</p>
 <h2 id="example">Example</h2>
 <pre><code class="language-python-repl">&gt;&gt;&gt; clr1 =Color((255, 0, 0))
 &gt;&gt;&gt; clr1
 &gt;&gt;&gt; Color(255, 0, 0)
-&gt;&gt;&gt; clr2 = Color(clr2.to_rgb())
+&gt;&gt;&gt; clr2 = Color(&quot;#ff0000&quot;)
 &gt;&gt;&gt; clr2
 &gt;&gt;&gt; Color(255, 0, 0)
-&gt;&gt;&gt; clr3 = Color(clr2)
-&gt;&gt;&gt; clr3
-&gt;&gt;&gt; Color(255, 0, 0)
+&gt;&gt;&gt; clr2.to_hex()
+&gt;&gt;&gt; &quot;#ff0000&quot;
 </code></pre></div>
 <details class="source">
 <summary>
@@ -287,23 +301,24 @@ class Color:
     def __init__(self, color: (tuple, &#34;Color&#34;) = None):
         &#34;&#34;&#34;
         Create a color from rbg or another color object
-        :param color: tuple of rbg values or Color object
+        :param color: tuple of rbg values or hex value or Color object
 
         Example:
             &gt;&gt;&gt; clr1 =Color((255, 0, 0))
             &gt;&gt;&gt; clr1
             &gt;&gt;&gt; Color(255, 0, 0)
-            &gt;&gt;&gt; clr2 = Color(clr2.to_rgb())
+            &gt;&gt;&gt; clr2 = Color(&#34;#ff0000&#34;)
             &gt;&gt;&gt; clr2
             &gt;&gt;&gt; Color(255, 0, 0)
-            &gt;&gt;&gt; clr3 = Color(clr2)
-            &gt;&gt;&gt; clr3
-            &gt;&gt;&gt; Color(255, 0, 0)
+            &gt;&gt;&gt; clr2.to_hex()
+            &gt;&gt;&gt; &#34;#ff0000&#34;
         &#34;&#34;&#34;
         if isinstance(color, tuple):
             self.r, self.g, self.b = color
         elif isinstance(color, Color):
             self.r, self.g, self.b = color.to_rgb()
+        elif isinstance(color, str):
+            self.r, self.g, self.b = Color.hex_to_rgb(color)
         elif color is None:
             self.r, self.g, self.b = 255, 255, 255
         else:
@@ -330,6 +345,20 @@ class Color:
             return self.b
         else:
             raise IndexError(f&#34;Index must be 0, 1 or 2, not {item}&#34;)
+
+    @staticmethod
+    def hex_to_rgb(hex_str: str) -&gt; Tuple[int, int, int]:
+        &#34;&#34;&#34;
+        Convert hexadecimal to rgb
+
+        :param hex_str: hexadecimal string
+        :return: rgb tuple
+        &#34;&#34;&#34;
+        if hex_str[0] == &#34;#&#34;:
+            hex_str = hex_str.lstrip(&#34;#&#34;)
+            return int(hex_str[0:2], 16), int(hex_str[2:4], 16), int(hex_str[4:6], 16)
+        else:
+            raise ValueError(f&#34;{hex_str} is not a valid hexadecimal&#34;)
 
     def to_hex(self) -&gt; str:
         &#34;&#34;&#34;
@@ -563,6 +592,35 @@ class Color:
 <div class="desc"></div>
 </dd>
 </dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="pyopt_tools.colors.Color.hex_to_rgb"><code class="name flex">
+<span>def <span class="ident">hex_to_rgb</span></span>(<span>hex_str: str) ‑> Tuple[int, int, int]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert hexadecimal to rgb</p>
+<p>:param hex_str: hexadecimal string
+:return: rgb tuple</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def hex_to_rgb(hex_str: str) -&gt; Tuple[int, int, int]:
+    &#34;&#34;&#34;
+    Convert hexadecimal to rgb
+
+    :param hex_str: hexadecimal string
+    :return: rgb tuple
+    &#34;&#34;&#34;
+    if hex_str[0] == &#34;#&#34;:
+        hex_str = hex_str.lstrip(&#34;#&#34;)
+        return int(hex_str[0:2], 16), int(hex_str[2:4], 16), int(hex_str[4:6], 16)
+    else:
+        raise ValueError(f&#34;{hex_str} is not a valid hexadecimal&#34;)</code></pre>
+</details>
+</dd>
+</dl>
 <h3>Methods</h3>
 <dl>
 <dt id="pyopt_tools.colors.Color.to_cmyk"><code class="name flex">
@@ -747,6 +805,7 @@ class Color:
 <li><code><a title="pyopt_tools.colors.Color.White" href="#pyopt_tools.colors.Color.White">White</a></code></li>
 <li><code><a title="pyopt_tools.colors.Color.Yellow" href="#pyopt_tools.colors.Color.Yellow">Yellow</a></code></li>
 <li><code><a title="pyopt_tools.colors.Color.YellowGreen" href="#pyopt_tools.colors.Color.YellowGreen">YellowGreen</a></code></li>
+<li><code><a title="pyopt_tools.colors.Color.hex_to_rgb" href="#pyopt_tools.colors.Color.hex_to_rgb">hex_to_rgb</a></code></li>
 <li><code><a title="pyopt_tools.colors.Color.to_cmyk" href="#pyopt_tools.colors.Color.to_cmyk">to_cmyk</a></code></li>
 <li><code><a title="pyopt_tools.colors.Color.to_hex" href="#pyopt_tools.colors.Color.to_hex">to_hex</a></code></li>
 <li><code><a title="pyopt_tools.colors.Color.to_hsv" href="#pyopt_tools.colors.Color.to_hsv">to_hsv</a></code></li>
