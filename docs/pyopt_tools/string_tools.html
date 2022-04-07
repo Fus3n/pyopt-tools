@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>pyopt_tools.string_tools API documentation</title>
+<meta name="description" content="string_tools contains functions for manipulating strings and other useful string-related functions." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pyopt_tools.string_tools</code></h1>
+</header>
+<section id="section-intro">
+<p>string_tools contains functions for manipulating strings and other useful string-related functions.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+string_tools contains functions for manipulating strings and other useful string-related functions.
+&#34;&#34;&#34;
+
+from string import ascii_letters
+from random import sample, randint
+
+_MORSE_DECODE_DICT = {&#34;-.-.--&#34;: &#34;!&#34;, &#34;.-..-.&#34;: &#39;&#34;&#39;, &#34;...-..-&#34;: &#34;$&#34;, &#34;.-...&#34;: &#34;&amp;&#34;, &#34;.----.&#34;: &#34;\\&#34;, &#34;-.--.&#34;: &#34;(&#34;,
+                      &#34;-.--.-&#34;: &#34;)&#34;, &#34;.-.-.&#34;: &#34;+&#34;, &#34;--..--&#34;: &#34;,&#34;, &#34;-....-&#34;: &#34;-&#34;, &#34;.-.-.-&#34;: &#34;.&#34;, &#34;-..-.&#34;: &#34;/&#34;,
+                      &#34;-----&#34;: &#34;0&#34;, &#34;.----&#34;: &#34;1&#34;, &#34;..---&#34;: &#34;2&#34;, &#34;...--&#34;: &#34;3&#34;, &#34;....-&#34;: &#34;4&#34;, &#34;.....&#34;: &#34;5&#34;, &#34;-....&#34;: &#34;6&#34;,
+                      &#34;--...&#34;: &#34;7&#34;, &#34;---..&#34;: &#34;8&#34;, &#34;----.&#34;: &#34;9&#34;, &#34;---...&#34;: &#34;:&#34;, &#34;-.-.-.&#34;: &#34;;&#34;, &#34;-...-&#34;: &#34;=&#34;,
+                      &#34;..--..&#34;: &#34;?&#34;, &#34;.--.-.&#34;: &#34;@&#34;, &#34;.-&#34;: &#34;A&#34;, &#34;-...&#34;: &#34;B&#34;, &#34;-.-.&#34;: &#34;C&#34;, &#34;-..&#34;: &#34;D&#34;, &#34;.&#34;: &#34;E&#34;,
+                      &#34;..-.&#34;: &#34;F&#34;, &#34;--.&#34;: &#34;G&#34;, &#34;....&#34;: &#34;H&#34;, &#34;..&#34;: &#34;I&#34;, &#34;.---&#34;: &#34;J&#34;, &#34;-.-&#34;: &#34;K&#34;, &#34;.-..&#34;: &#34;L&#34;, &#34;--&#34;: &#34;M&#34;,
+                      &#34;-.&#34;: &#34;N&#34;, &#34;---&#34;: &#34;O&#34;, &#34;.--.&#34;: &#34;P&#34;, &#34;--.-&#34;: &#34;Q&#34;, &#34;.-.&#34;: &#34;R&#34;, &#34;...&#34;: &#34;S&#34;, &#34;-&#34;: &#34;T&#34;, &#34;..-&#34;: &#34;U&#34;,
+                      &#34;...-&#34;: &#34;V&#34;, &#34;.--&#34;: &#34;W&#34;, &#34;-..-&#34;: &#34;X&#34;, &#34;-.--&#34;: &#34;Y&#34;, &#34;--..&#34;: &#34;Z&#34;, &#34;..--.-&#34;: &#34;_&#34;,
+                      &#34;...---...&#34;: &#34;SOS&#34;}
+_MORSE_ENCODE_DICT = {&#39;A&#39;: &#39;.-&#39;, &#39;B&#39;: &#39;-...&#39;, &#39;C&#39;: &#39;-.-.&#39;, &#39;D&#39;: &#39;-..&#39;, &#39;E&#39;: &#39;.&#39;, &#39;F&#39;: &#39;..-.&#39;, &#39;G&#39;: &#39;--.&#39;, &#39;H&#39;: &#39;....&#39;,
+                      &#39;I&#39;: &#39;..&#39;, &#39;J&#39;: &#39;.---&#39;, &#39;K&#39;: &#39;-.-&#39;, &#39;L&#39;: &#39;.-..&#39;, &#39;M&#39;: &#39;--&#39;, &#39;N&#39;: &#39;-.&#39;, &#39;O&#39;: &#39;---&#39;, &#39;P&#39;: &#39;.--.&#39;,
+                      &#39;Q&#39;: &#39;--.-&#39;, &#39;R&#39;: &#39;.-.&#39;, &#39;S&#39;: &#39;...&#39;, &#39;T&#39;: &#39;-&#39;, &#39;U&#39;: &#39;..-&#39;, &#39;V&#39;: &#39;...-&#39;, &#39;W&#39;: &#39;.--&#39;, &#39;X&#39;: &#39;-..-&#39;,
+                      &#39;Y&#39;: &#39;-.--&#39;, &#39;Z&#39;: &#39;--..&#39;, &#39;1&#39;: &#39;.----&#39;, &#39;2&#39;: &#39;..---&#39;, &#39;3&#39;: &#39;...--&#39;, &#39;4&#39;: &#39;....-&#39;, &#39;5&#39;: &#39;.....&#39;,
+                      &#39;6&#39;: &#39;-....&#39;, &#39;7&#39;: &#39;--...&#39;, &#39;8&#39;: &#39;---..&#39;, &#39;9&#39;: &#39;----.&#39;, &#39;0&#39;: &#39;-----&#39;, &#39;, &#39;: &#39;--..--&#39;,
+                      &#39;.&#39;: &#39;.-.-.-&#39;, &#39;?&#39;: &#39;..--..&#39;, &#39;/&#39;: &#39;-..-.&#39;, &#39;-&#39;: &#39;-....-&#39;, &#39;(&#39;: &#39;-.--.&#39;, &#39;)&#39;: &#39;-.--.-&#39;}
+
+
+def to_binary(string: str) -&gt; str:
+    &#34;&#34;&#34;
+    Convert String to numerical binary numbers
+    returns numerical binary string
+    :param string: String to convert
+
+    Example:
+        &gt;&gt;&gt; to_binary(&#34;test&#34;)
+        &gt;&gt;&gt; &#34;1110100 1100101 1110011 1110100&#34;
+    &#34;&#34;&#34;
+    bin_conv = []
+    for c in string:
+        ascii_val = ord(c)
+        binary_val = bin(ascii_val)
+        bin_conv.append(binary_val[2:])
+
+    return &#39; &#39;.join(bin_conv)
+
+
+def bin_to_text(string: str) -&gt; str:
+    &#34;&#34;&#34;
+    Convert Binary Numerical Values back to string
+    returns utf-8 String
+    :param string: Binary String
+    :return: str
+
+    Example:
+        &gt;&gt;&gt; bin_to_text(&#34;1110100 1100101 1110011 1110100&#34;)
+        &gt;&gt;&gt; &#39;test&#39;
+    &#34;&#34;&#34;
+    return &#34;&#34;.join([chr(int(binary, 2)) for binary in string.split(&#34; &#34;)])
+
+
+def reverse_string(string: str) -&gt; str:
+    &#34;&#34;&#34;
+    Returns a new reversed string
+    :param string: String to reverse
+    :return: str
+
+    Example:
+        &gt;&gt;&gt; reverse_string(&#34;test&#34;)
+        &gt;&gt;&gt; &#34;tset&#34;
+
+
+    &#34;&#34;&#34;
+    return string[::-1]
+
+
+def encodeMorse(sequence: str) -&gt; str:
+    &#34;&#34;&#34;
+       Encodes the given string to Morse Code
+
+       Morse code is case-insensitive and traditonally Capital Letters are used
+       Lower cases are converted to Upper cases
+
+       Every Character code is seperated by a single space between them
+
+       A space in the sequence is translated as &#39;   &#39; three spaces
+    :param sequence: String to encode
+    :return: str
+
+    Example:
+        &gt;&gt;&gt; encodeMorse(&#34;HELLO WORLD&#34;)
+        &gt;&gt;&gt; &#34;.... . .-.. .-.. ---   .-- --- .-. .-.. -..&#34;
+    &#34;&#34;&#34;
+    encoded = &#39;&#39;
+    for letter in sequence.upper():
+        if letter != &#39; &#39;:
+            encoded += _MORSE_ENCODE_DICT[letter] + &#39; &#39;
+        else:
+            encoded += &#39;  &#39;
+
+    return encoded.strip()
+
+
+def decodeMorse(sequence: str) -&gt; str:
+    &#34;&#34;&#34;
+    Fully Decodes to Morse codes encoded using encodeMorse() to Upper Case Alphabets
+    //Morse codes encoded using external encoders may raise error//
+    :param sequence: String to decode
+    :return: str
+
+    Example:
+        &gt;&gt;&gt; decodeMorse(&#34;.... . .-.. .-.. ---   .-- --- .-. .-.. -..&#34;)
+        &gt;&gt;&gt; &#34;HELLO WORLD&#34;
+
+    &#34;&#34;&#34;
+    return &#39; &#39;.join(
+        &#39;&#39;.join(_MORSE_DECODE_DICT[letter] for letter in word.split(&#39; &#39;)) for word in sequence.strip().split(&#39;   &#39;))
+
+
+def encodeCaesar(sequence: str, shift: int = 1) -&gt; str:
+    &#34;&#34;&#34;
+    Encodes the given string to Caesar Cipher
+    :param sequence: String to encode
+    :param shift: Shift value
+
+    Example:
+        &gt;&gt;&gt; encodeCaesar(&#34;HELLO WORLD&#34;, 1)
+        &gt;&gt;&gt; &#34;IFMMP XPSME&#34;
+    &#34;&#34;&#34;
+    return &#39;&#39;.join(chr(((ord(c) - 65 + shift) % 26) + 65) if 65 &lt;= ord(c) &lt;= 90 else c for c in sequence)
+
+
+def decodeCaesar(sequence: str, shift: int = 1) -&gt; str:
+    &#34;&#34;&#34;
+    Decodes the given string to Caesar Cipher
+    :param sequence: String to decode
+    :param shift: Shift value
+
+    Example:
+        &gt;&gt;&gt; decodeCaesar(&#34;IFMMP XPSME&#34;, 1)
+        &gt;&gt;&gt; &#34;HELLO WORLD&#34;
+    &#34;&#34;&#34;
+    return &#39;&#39;.join(chr(((ord(c) - 65 - shift) % 26) + 65) if 65 &lt;= ord(c) &lt;= 90 else c for c in sequence)
+
+
+def split_str(string: str, maxsplit: int = 1) -&gt; list:
+    &#34;&#34;&#34;
+    Splits characters of a String into List of Strings
+    :param string: String to split
+    :param maxsplit: It is the number of skips in character before splitting, DEFAULT = 1
+    :return: Returns the Array containing elements of characters splitted from the String
+
+    Example:
+        &gt;&gt;&gt; split_str(&#34;HELLO WORLD&#34;, 2)
+        &gt;&gt;&gt; [&#39;He&#39;, &#39;ll&#39;, &#39;o &#39;, &#39;Wo&#39;, &#39;rl&#39;]
+
+    &#34;&#34;&#34;
+    txt = &#34;&#34;
+    str_list = []
+    for i in string:
+        txt += i
+        if len(txt) == maxsplit:
+            str_list.append(txt)
+            txt = &#39;&#39;
+    return str_list
+
+
+def is_pangram(string: str) -&gt; bool:
+    &#34;&#34;&#34;
+    Checks if the given string is a pangram or not
+    :param string: String to check
+    :return: bool
+
+    Example:
+        &gt;&gt;&gt; is_pangram(&#34;The quick, brown fox jumps over the lazy dog!&#34;)
+        &gt;&gt;&gt; True
+
+    &#34;&#34;&#34;
+    count = 0
+    for character in range(97, 123):
+        if chr(character) in string or chr(character).upper() in string:
+            count += 1
+    if count == 26: return True
+    return False
+
+
+def is_palindrome(string: str) -&gt; bool:
+    &#34;&#34;&#34;
+    Checks if the given string is a palindrome or not
+    :param string: String to check
+    :return: bool
+
+    Example:
+        &gt;&gt;&gt; is_palindrome(&#34;ABA&#34;)\n
+        &gt;&gt;&gt; True
+
+    &#34;&#34;&#34;
+    if string == string[::-1]:
+        return True
+    return False
+
+
+def is_anagram(str1: str, str2: str) -&gt; bool:
+    &#34;&#34;&#34;
+    Checks if the given string is an anagram of another string
+    :param str1: String to check
+    :param str2: String to check
+    :return: bool
+
+    Example:
+        &gt;&gt;&gt; is_anagram(&#34;waterbottle&#34;, &#34;erbottlewat&#34;)
+        &gt;&gt;&gt; True
+
+    &#34;&#34;&#34;
+    if len(str1) != len(str2):
+        return False
+    return sorted(str1) == sorted(str2)
+
+
+def is_rotation(str1: str, str2: str) -&gt; bool:
+    &#34;&#34;&#34;
+    Checks if the given string is a rotation of another string
+    :param str1: String to check
+    :param str2: String to check
+    :return: bool
+
+    Example:
+        &gt;&gt;&gt; is_rotation(&#34;waterbottle&#34;, &#34;erbottlewat&#34;)
+        &gt;&gt;&gt; True
+
+    &#34;&#34;&#34;
+    if len(str1) != len(str2):
+        return False
+    return str2 in (str1 + str1)
+
+
+def make_n_gram(string: str, n: int) -&gt; list:
+    &#34;&#34;&#34;
+    Creates n-grams from the given string
+
+    :param string: Specify a input String
+    :param n: Specify the n-gram size
+    :return: Returns the Array containing n-grams
+
+    Example:
+        &gt;&gt;&gt; make_n_gram(&#34;Hello world&#34;, 2)
+        &gt;&gt;&gt; [&#39;He&#39;, &#39;el&#39;, &#39;ll&#39;, &#39;lo&#39;, &#39;o &#39;, &#39; w&#39;, &#39;wo&#39;, &#39;or&#39;, &#39;rl&#39;, &#39;ld&#39;]
+
+    &#34;&#34;&#34;
+    n_grams = []
+    for i in range(len(string) - n + 1):
+        n_grams.append(string[i:i + n])
+    return n_grams
+
+
+def randomize_string(string: str) -&gt; str:
+    &#34;&#34;&#34;
+    Randomizes the given string
+    :param string: String to randomize
+    :return: str
+
+    Example:
+        &gt;&gt;&gt; randomize_string(&#34;Hello World&#34;)
+        &gt;&gt;&gt; &#39;rldloHW&#39;
+
+    &#34;&#34;&#34;
+    return &#39;&#39;.join(sample(string, len(string)))
+
+
+def get_random_color() -&gt; str:
+    &#34;&#34;&#34;
+    Returns a random hex color
+    :return: str
+
+
+    Example:
+        &gt;&gt;&gt; get_random_color()
+        &gt;&gt;&gt; &#39;#ff0000&#39;
+
+    &#34;&#34;&#34;
+    return &#39;#{:06x}&#39;.format(randint(0, 0xFFFFFF))
+
+
+def get_random_string(length: int) -&gt; str:
+    &#34;&#34;&#34;
+    Returns a random string of given length
+    :param length: Length of the string
+    :return: str
+
+    Example:
+        &gt;&gt;&gt; get_random_string(10)
+        &gt;&gt;&gt; &#39;qwertzuiop&#39;
+
+    &#34;&#34;&#34;
+    return &#39;&#39;.join(sample(ascii_letters, length))
+
+
+def count_vowels(string: str) -&gt; int:
+    &#34;&#34;&#34;
+    Counts the number of vowels in the given string
+    :param string: String to count
+    :return: int
+
+    Example:
+        &gt;&gt;&gt; count_vowels(&#34;Hello World&#34;)
+        &gt;&gt;&gt; 3
+
+    &#34;&#34;&#34;
+    return sum(1 for char in string if char.lower() in &#39;aeiou&#39;)
+
+
+def count_consonants(string: str) -&gt; int:
+    &#34;&#34;&#34;
+    Counts the number of consonants in the given string
+    :param string: String to count
+    :return: int
+
+    Example:
+        &gt;&gt;&gt; count_consonants(&#34;Hello World&#34;)
+        &gt;&gt;&gt; 7
+
+    &#34;&#34;&#34;
+    return sum(1 for char in string if char.lower() in &#39;bcdfghjklmnpqrstvwxyz&#39;)
+
+
+def count_lines(string: str) -&gt; int:
+    &#34;&#34;&#34;
+    Counts the number of lines in the given string
+    :param string: String to count
+    :return: int
+
+    Example:
+        &gt;&gt;&gt; count_lines(&#34;Hello World&#34;)
+        &gt;&gt;&gt; 1
+
+    &#34;&#34;&#34;
+    return len(string.splitlines())</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="pyopt_tools.string_tools.bin_to_text"><code class="name flex">
+<span>def <span class="ident">bin_to_text</span></span>(<span>string: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert Binary Numerical Values back to string
+returns utf-8 String
+:param string: Binary String
+:return: str</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; bin_to_text(&quot;1110100 1100101 1110011 1110100&quot;)
+&gt;&gt;&gt; 'test'
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def bin_to_text(string: str) -&gt; str:
+    &#34;&#34;&#34;
+    Convert Binary Numerical Values back to string
+    returns utf-8 String
+    :param string: Binary String
+    :return: str
+
+    Example:
+        &gt;&gt;&gt; bin_to_text(&#34;1110100 1100101 1110011 1110100&#34;)
+        &gt;&gt;&gt; &#39;test&#39;
+    &#34;&#34;&#34;
+    return &#34;&#34;.join([chr(int(binary, 2)) for binary in string.split(&#34; &#34;)])</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.count_consonants"><code class="name flex">
+<span>def <span class="ident">count_consonants</span></span>(<span>string: str) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Counts the number of consonants in the given string
+:param string: String to count
+:return: int</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; count_consonants(&quot;Hello World&quot;)
+&gt;&gt;&gt; 7
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def count_consonants(string: str) -&gt; int:
+    &#34;&#34;&#34;
+    Counts the number of consonants in the given string
+    :param string: String to count
+    :return: int
+
+    Example:
+        &gt;&gt;&gt; count_consonants(&#34;Hello World&#34;)
+        &gt;&gt;&gt; 7
+
+    &#34;&#34;&#34;
+    return sum(1 for char in string if char.lower() in &#39;bcdfghjklmnpqrstvwxyz&#39;)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.count_lines"><code class="name flex">
+<span>def <span class="ident">count_lines</span></span>(<span>string: str) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Counts the number of lines in the given string
+:param string: String to count
+:return: int</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; count_lines(&quot;Hello World&quot;)
+&gt;&gt;&gt; 1
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def count_lines(string: str) -&gt; int:
+    &#34;&#34;&#34;
+    Counts the number of lines in the given string
+    :param string: String to count
+    :return: int
+
+    Example:
+        &gt;&gt;&gt; count_lines(&#34;Hello World&#34;)
+        &gt;&gt;&gt; 1
+
+    &#34;&#34;&#34;
+    return len(string.splitlines())</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.count_vowels"><code class="name flex">
+<span>def <span class="ident">count_vowels</span></span>(<span>string: str) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Counts the number of vowels in the given string
+:param string: String to count
+:return: int</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; count_vowels(&quot;Hello World&quot;)
+&gt;&gt;&gt; 3
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def count_vowels(string: str) -&gt; int:
+    &#34;&#34;&#34;
+    Counts the number of vowels in the given string
+    :param string: String to count
+    :return: int
+
+    Example:
+        &gt;&gt;&gt; count_vowels(&#34;Hello World&#34;)
+        &gt;&gt;&gt; 3
+
+    &#34;&#34;&#34;
+    return sum(1 for char in string if char.lower() in &#39;aeiou&#39;)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.decodeCaesar"><code class="name flex">
+<span>def <span class="ident">decodeCaesar</span></span>(<span>sequence: str, shift: int = 1) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Decodes the given string to Caesar Cipher
+:param sequence: String to decode
+:param shift: Shift value</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; decodeCaesar(&quot;IFMMP XPSME&quot;, 1)
+&gt;&gt;&gt; &quot;HELLO WORLD&quot;
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decodeCaesar(sequence: str, shift: int = 1) -&gt; str:
+    &#34;&#34;&#34;
+    Decodes the given string to Caesar Cipher
+    :param sequence: String to decode
+    :param shift: Shift value
+
+    Example:
+        &gt;&gt;&gt; decodeCaesar(&#34;IFMMP XPSME&#34;, 1)
+        &gt;&gt;&gt; &#34;HELLO WORLD&#34;
+    &#34;&#34;&#34;
+    return &#39;&#39;.join(chr(((ord(c) - 65 - shift) % 26) + 65) if 65 &lt;= ord(c) &lt;= 90 else c for c in sequence)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.decodeMorse"><code class="name flex">
+<span>def <span class="ident">decodeMorse</span></span>(<span>sequence: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fully Decodes to Morse codes encoded using encodeMorse() to Upper Case Alphabets
+//Morse codes encoded using external encoders may raise error//
+:param sequence: String to decode
+:return: str</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; decodeMorse(&quot;.... . .-.. .-.. ---   .-- --- .-. .-.. -..&quot;)
+&gt;&gt;&gt; &quot;HELLO WORLD&quot;
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decodeMorse(sequence: str) -&gt; str:
+    &#34;&#34;&#34;
+    Fully Decodes to Morse codes encoded using encodeMorse() to Upper Case Alphabets
+    //Morse codes encoded using external encoders may raise error//
+    :param sequence: String to decode
+    :return: str
+
+    Example:
+        &gt;&gt;&gt; decodeMorse(&#34;.... . .-.. .-.. ---   .-- --- .-. .-.. -..&#34;)
+        &gt;&gt;&gt; &#34;HELLO WORLD&#34;
+
+    &#34;&#34;&#34;
+    return &#39; &#39;.join(
+        &#39;&#39;.join(_MORSE_DECODE_DICT[letter] for letter in word.split(&#39; &#39;)) for word in sequence.strip().split(&#39;   &#39;))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.encodeCaesar"><code class="name flex">
+<span>def <span class="ident">encodeCaesar</span></span>(<span>sequence: str, shift: int = 1) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Encodes the given string to Caesar Cipher
+:param sequence: String to encode
+:param shift: Shift value</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; encodeCaesar(&quot;HELLO WORLD&quot;, 1)
+&gt;&gt;&gt; &quot;IFMMP XPSME&quot;
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def encodeCaesar(sequence: str, shift: int = 1) -&gt; str:
+    &#34;&#34;&#34;
+    Encodes the given string to Caesar Cipher
+    :param sequence: String to encode
+    :param shift: Shift value
+
+    Example:
+        &gt;&gt;&gt; encodeCaesar(&#34;HELLO WORLD&#34;, 1)
+        &gt;&gt;&gt; &#34;IFMMP XPSME&#34;
+    &#34;&#34;&#34;
+    return &#39;&#39;.join(chr(((ord(c) - 65 + shift) % 26) + 65) if 65 &lt;= ord(c) &lt;= 90 else c for c in sequence)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.encodeMorse"><code class="name flex">
+<span>def <span class="ident">encodeMorse</span></span>(<span>sequence: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Encodes the given string to Morse Code</p>
+<p>Morse code is case-insensitive and traditonally Capital Letters are used
+Lower cases are converted to Upper cases</p>
+<p>Every Character code is seperated by a single space between them</p>
+<p>A space in the sequence is translated as '
+' three spaces
+:param sequence: String to encode
+:return: str</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; encodeMorse(&quot;HELLO WORLD&quot;)
+&gt;&gt;&gt; &quot;.... . .-.. .-.. ---   .-- --- .-. .-.. -..&quot;
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def encodeMorse(sequence: str) -&gt; str:
+    &#34;&#34;&#34;
+       Encodes the given string to Morse Code
+
+       Morse code is case-insensitive and traditonally Capital Letters are used
+       Lower cases are converted to Upper cases
+
+       Every Character code is seperated by a single space between them
+
+       A space in the sequence is translated as &#39;   &#39; three spaces
+    :param sequence: String to encode
+    :return: str
+
+    Example:
+        &gt;&gt;&gt; encodeMorse(&#34;HELLO WORLD&#34;)
+        &gt;&gt;&gt; &#34;.... . .-.. .-.. ---   .-- --- .-. .-.. -..&#34;
+    &#34;&#34;&#34;
+    encoded = &#39;&#39;
+    for letter in sequence.upper():
+        if letter != &#39; &#39;:
+            encoded += _MORSE_ENCODE_DICT[letter] + &#39; &#39;
+        else:
+            encoded += &#39;  &#39;
+
+    return encoded.strip()</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.get_random_color"><code class="name flex">
+<span>def <span class="ident">get_random_color</span></span>(<span>) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a random hex color
+:return: str</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; get_random_color()
+&gt;&gt;&gt; '#ff0000'
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_random_color() -&gt; str:
+    &#34;&#34;&#34;
+    Returns a random hex color
+    :return: str
+
+
+    Example:
+        &gt;&gt;&gt; get_random_color()
+        &gt;&gt;&gt; &#39;#ff0000&#39;
+
+    &#34;&#34;&#34;
+    return &#39;#{:06x}&#39;.format(randint(0, 0xFFFFFF))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.get_random_string"><code class="name flex">
+<span>def <span class="ident">get_random_string</span></span>(<span>length: int) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a random string of given length
+:param length: Length of the string
+:return: str</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; get_random_string(10)
+&gt;&gt;&gt; 'qwertzuiop'
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_random_string(length: int) -&gt; str:
+    &#34;&#34;&#34;
+    Returns a random string of given length
+    :param length: Length of the string
+    :return: str
+
+    Example:
+        &gt;&gt;&gt; get_random_string(10)
+        &gt;&gt;&gt; &#39;qwertzuiop&#39;
+
+    &#34;&#34;&#34;
+    return &#39;&#39;.join(sample(ascii_letters, length))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.is_anagram"><code class="name flex">
+<span>def <span class="ident">is_anagram</span></span>(<span>str1: str, str2: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if the given string is an anagram of another string
+:param str1: String to check
+:param str2: String to check
+:return: bool</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; is_anagram(&quot;waterbottle&quot;, &quot;erbottlewat&quot;)
+&gt;&gt;&gt; True
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_anagram(str1: str, str2: str) -&gt; bool:
+    &#34;&#34;&#34;
+    Checks if the given string is an anagram of another string
+    :param str1: String to check
+    :param str2: String to check
+    :return: bool
+
+    Example:
+        &gt;&gt;&gt; is_anagram(&#34;waterbottle&#34;, &#34;erbottlewat&#34;)
+        &gt;&gt;&gt; True
+
+    &#34;&#34;&#34;
+    if len(str1) != len(str2):
+        return False
+    return sorted(str1) == sorted(str2)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.is_palindrome"><code class="name flex">
+<span>def <span class="ident">is_palindrome</span></span>(<span>string: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if the given string is a palindrome or not
+:param string: String to check
+:return: bool</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; is_palindrome(&quot;ABA&quot;)
+</code></pre>
+<pre><code class="language-python-repl">&gt;&gt;&gt; True
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_palindrome(string: str) -&gt; bool:
+    &#34;&#34;&#34;
+    Checks if the given string is a palindrome or not
+    :param string: String to check
+    :return: bool
+
+    Example:
+        &gt;&gt;&gt; is_palindrome(&#34;ABA&#34;)\n
+        &gt;&gt;&gt; True
+
+    &#34;&#34;&#34;
+    if string == string[::-1]:
+        return True
+    return False</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.is_pangram"><code class="name flex">
+<span>def <span class="ident">is_pangram</span></span>(<span>string: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if the given string is a pangram or not
+:param string: String to check
+:return: bool</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; is_pangram(&quot;The quick, brown fox jumps over the lazy dog!&quot;)
+&gt;&gt;&gt; True
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_pangram(string: str) -&gt; bool:
+    &#34;&#34;&#34;
+    Checks if the given string is a pangram or not
+    :param string: String to check
+    :return: bool
+
+    Example:
+        &gt;&gt;&gt; is_pangram(&#34;The quick, brown fox jumps over the lazy dog!&#34;)
+        &gt;&gt;&gt; True
+
+    &#34;&#34;&#34;
+    count = 0
+    for character in range(97, 123):
+        if chr(character) in string or chr(character).upper() in string:
+            count += 1
+    if count == 26: return True
+    return False</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.is_rotation"><code class="name flex">
+<span>def <span class="ident">is_rotation</span></span>(<span>str1: str, str2: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if the given string is a rotation of another string
+:param str1: String to check
+:param str2: String to check
+:return: bool</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; is_rotation(&quot;waterbottle&quot;, &quot;erbottlewat&quot;)
+&gt;&gt;&gt; True
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_rotation(str1: str, str2: str) -&gt; bool:
+    &#34;&#34;&#34;
+    Checks if the given string is a rotation of another string
+    :param str1: String to check
+    :param str2: String to check
+    :return: bool
+
+    Example:
+        &gt;&gt;&gt; is_rotation(&#34;waterbottle&#34;, &#34;erbottlewat&#34;)
+        &gt;&gt;&gt; True
+
+    &#34;&#34;&#34;
+    if len(str1) != len(str2):
+        return False
+    return str2 in (str1 + str1)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.make_n_gram"><code class="name flex">
+<span>def <span class="ident">make_n_gram</span></span>(<span>string: str, n: int) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates n-grams from the given string</p>
+<p>:param string: Specify a input String
+:param n: Specify the n-gram size
+:return: Returns the Array containing n-grams</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; make_n_gram(&quot;Hello world&quot;, 2)
+&gt;&gt;&gt; ['He', 'el', 'll', 'lo', 'o ', ' w', 'wo', 'or', 'rl', 'ld']
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_n_gram(string: str, n: int) -&gt; list:
+    &#34;&#34;&#34;
+    Creates n-grams from the given string
+
+    :param string: Specify a input String
+    :param n: Specify the n-gram size
+    :return: Returns the Array containing n-grams
+
+    Example:
+        &gt;&gt;&gt; make_n_gram(&#34;Hello world&#34;, 2)
+        &gt;&gt;&gt; [&#39;He&#39;, &#39;el&#39;, &#39;ll&#39;, &#39;lo&#39;, &#39;o &#39;, &#39; w&#39;, &#39;wo&#39;, &#39;or&#39;, &#39;rl&#39;, &#39;ld&#39;]
+
+    &#34;&#34;&#34;
+    n_grams = []
+    for i in range(len(string) - n + 1):
+        n_grams.append(string[i:i + n])
+    return n_grams</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.randomize_string"><code class="name flex">
+<span>def <span class="ident">randomize_string</span></span>(<span>string: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Randomizes the given string
+:param string: String to randomize
+:return: str</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; randomize_string(&quot;Hello World&quot;)
+&gt;&gt;&gt; 'rldloHW'
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def randomize_string(string: str) -&gt; str:
+    &#34;&#34;&#34;
+    Randomizes the given string
+    :param string: String to randomize
+    :return: str
+
+    Example:
+        &gt;&gt;&gt; randomize_string(&#34;Hello World&#34;)
+        &gt;&gt;&gt; &#39;rldloHW&#39;
+
+    &#34;&#34;&#34;
+    return &#39;&#39;.join(sample(string, len(string)))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.reverse_string"><code class="name flex">
+<span>def <span class="ident">reverse_string</span></span>(<span>string: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a new reversed string
+:param string: String to reverse
+:return: str</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; reverse_string(&quot;test&quot;)
+&gt;&gt;&gt; &quot;tset&quot;
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reverse_string(string: str) -&gt; str:
+    &#34;&#34;&#34;
+    Returns a new reversed string
+    :param string: String to reverse
+    :return: str
+
+    Example:
+        &gt;&gt;&gt; reverse_string(&#34;test&#34;)
+        &gt;&gt;&gt; &#34;tset&#34;
+
+
+    &#34;&#34;&#34;
+    return string[::-1]</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.split_str"><code class="name flex">
+<span>def <span class="ident">split_str</span></span>(<span>string: str, maxsplit: int = 1) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Splits characters of a String into List of Strings
+:param string: String to split
+:param maxsplit: It is the number of skips in character before splitting, DEFAULT = 1
+:return: Returns the Array containing elements of characters splitted from the String</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; split_str(&quot;HELLO WORLD&quot;, 2)
+&gt;&gt;&gt; ['He', 'll', 'o ', 'Wo', 'rl']
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def split_str(string: str, maxsplit: int = 1) -&gt; list:
+    &#34;&#34;&#34;
+    Splits characters of a String into List of Strings
+    :param string: String to split
+    :param maxsplit: It is the number of skips in character before splitting, DEFAULT = 1
+    :return: Returns the Array containing elements of characters splitted from the String
+
+    Example:
+        &gt;&gt;&gt; split_str(&#34;HELLO WORLD&#34;, 2)
+        &gt;&gt;&gt; [&#39;He&#39;, &#39;ll&#39;, &#39;o &#39;, &#39;Wo&#39;, &#39;rl&#39;]
+
+    &#34;&#34;&#34;
+    txt = &#34;&#34;
+    str_list = []
+    for i in string:
+        txt += i
+        if len(txt) == maxsplit:
+            str_list.append(txt)
+            txt = &#39;&#39;
+    return str_list</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.string_tools.to_binary"><code class="name flex">
+<span>def <span class="ident">to_binary</span></span>(<span>string: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert String to numerical binary numbers
+returns numerical binary string
+:param string: String to convert</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; to_binary(&quot;test&quot;)
+&gt;&gt;&gt; &quot;1110100 1100101 1110011 1110100&quot;
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_binary(string: str) -&gt; str:
+    &#34;&#34;&#34;
+    Convert String to numerical binary numbers
+    returns numerical binary string
+    :param string: String to convert
+
+    Example:
+        &gt;&gt;&gt; to_binary(&#34;test&#34;)
+        &gt;&gt;&gt; &#34;1110100 1100101 1110011 1110100&#34;
+    &#34;&#34;&#34;
+    bin_conv = []
+    for c in string:
+        ascii_val = ord(c)
+        binary_val = bin(ascii_val)
+        bin_conv.append(binary_val[2:])
+
+    return &#39; &#39;.join(bin_conv)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="pyopt_tools" href="index.html">pyopt_tools</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="pyopt_tools.string_tools.bin_to_text" href="#pyopt_tools.string_tools.bin_to_text">bin_to_text</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.count_consonants" href="#pyopt_tools.string_tools.count_consonants">count_consonants</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.count_lines" href="#pyopt_tools.string_tools.count_lines">count_lines</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.count_vowels" href="#pyopt_tools.string_tools.count_vowels">count_vowels</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.decodeCaesar" href="#pyopt_tools.string_tools.decodeCaesar">decodeCaesar</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.decodeMorse" href="#pyopt_tools.string_tools.decodeMorse">decodeMorse</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.encodeCaesar" href="#pyopt_tools.string_tools.encodeCaesar">encodeCaesar</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.encodeMorse" href="#pyopt_tools.string_tools.encodeMorse">encodeMorse</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.get_random_color" href="#pyopt_tools.string_tools.get_random_color">get_random_color</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.get_random_string" href="#pyopt_tools.string_tools.get_random_string">get_random_string</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.is_anagram" href="#pyopt_tools.string_tools.is_anagram">is_anagram</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.is_palindrome" href="#pyopt_tools.string_tools.is_palindrome">is_palindrome</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.is_pangram" href="#pyopt_tools.string_tools.is_pangram">is_pangram</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.is_rotation" href="#pyopt_tools.string_tools.is_rotation">is_rotation</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.make_n_gram" href="#pyopt_tools.string_tools.make_n_gram">make_n_gram</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.randomize_string" href="#pyopt_tools.string_tools.randomize_string">randomize_string</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.reverse_string" href="#pyopt_tools.string_tools.reverse_string">reverse_string</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.split_str" href="#pyopt_tools.string_tools.split_str">split_str</a></code></li>
+<li><code><a title="pyopt_tools.string_tools.to_binary" href="#pyopt_tools.string_tools.to_binary">to_binary</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

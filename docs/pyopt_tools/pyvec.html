@@ -1,0 +1,2074 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>pyopt_tools.pyvec API documentation</title>
+<meta name="description" content="pyvec contains Vector2 and Vector3 classes.
+with all useful vector operations." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pyopt_tools.pyvec</code></h1>
+</header>
+<section id="section-intro">
+<p>pyvec contains Vector2 and Vector3 classes.
+with all useful vector operations.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+pyvec contains Vector2 and Vector3 classes.
+with all useful vector operations.
+&#34;&#34;&#34;
+
+from math import floor, ceil, trunc, acos
+
+
+# Vector2
+class Vec2:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __int__(self, other: &#34;Vec2&#34;):
+        self.x = other.x
+        self.y = other.y
+
+    def distance(self, other: &#34;Vec2&#34;):
+        &#34;&#34;&#34;
+        Returns the distance between two points.
+        :param other: The other point.
+        :return: The distance.
+        &#34;&#34;&#34;
+        return abs(self - other)
+
+    def scale(self, other: &#34;Vec2&#34;):
+        &#34;&#34;&#34;
+        Returns the scaled vector.
+        :param other: The scaling vector.
+        :return: The scaled vector.
+        &#34;&#34;&#34;
+        return Vec2(self.x * other.x, self.y * other.y)
+
+    def reflect(self, normal):
+        &#34;&#34;&#34;
+        Returns the reflected vector.
+        :param normal: The normal vector.
+        :return: The reflected vector.
+        &#34;&#34;&#34;
+        return self - 2 * self.dot(normal) * normal
+
+    def angle_between(self, other):
+        &#34;&#34;&#34;
+        Returns the angle between two vectors.
+        :param other: The other vector.
+        :return: The angle.
+        &#34;&#34;&#34;
+        return acos(self.dot(other) / (self.length() * other.length()))
+
+    @property
+    def normalize(self):
+        &#34;&#34;&#34;
+        Returns a normalized vector.
+        :return: The normalized vector.
+        &#34;&#34;&#34;
+        return self / self.length()
+
+    def dot(self, other):
+        &#34;&#34;&#34;
+        Returns the dot product of two vectors.
+        :param other: The other vector.
+        :return: The dot product.
+        &#34;&#34;&#34;
+        return self.x * other.x + self.y * other.y
+
+    def length(self):
+        &#34;&#34;&#34;
+        Returns the length of the vector.
+        :return: The magnitude.
+        &#34;&#34;&#34;
+        return (self.x ** 2 + self.y ** 2) ** 0.5
+
+    def length_sqr(self):
+        &#34;&#34;&#34;
+        Returns the squared length of the vector.
+        :return: The squared magnitude.
+        &#34;&#34;&#34;
+        return self.x ** 2 + self.y ** 2
+
+    @staticmethod
+    def angle(a, b):
+        &#34;&#34;&#34;
+        Returns the angle between two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The angle.
+        &#34;&#34;&#34;
+        return acos(a.dot(b) / (a.length() * b.length()))
+
+    @staticmethod
+    def zero():
+        &#34;&#34;&#34;
+        Returns a zero vector.
+        :return: The zero vector.
+        &#34;&#34;&#34;
+        return Vec2(0, 0)
+
+    @staticmethod
+    def cross(a, b):
+        &#34;&#34;&#34;
+        Returns the cross product of two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The cross product.
+        &#34;&#34;&#34;
+        return a.x * b.y - a.y * b.x
+
+    @staticmethod
+    def up():
+        &#34;&#34;&#34;
+        Returns a vector pointing up.
+        :return: The vector.
+        &#34;&#34;&#34;
+        return Vec2(0, 1)
+
+    @staticmethod
+    def down():
+        &#34;&#34;&#34;
+        Returns a vector pointing down.
+        :return: The vector.
+        &#34;&#34;&#34;
+        return Vec2(0, -1)
+
+    @staticmethod
+    def right():
+        &#34;&#34;&#34;
+        Returns a vector pointing right.
+        :return: The vector.
+        &#34;&#34;&#34;
+        return Vec2(1, 0)
+
+    @staticmethod
+    def left():
+        &#34;&#34;&#34;
+        Returns a vector pointing left.
+        :return: The vector.
+        &#34;&#34;&#34;
+        return Vec2(-1, 0)
+
+    @staticmethod
+    def forward():
+        &#34;&#34;&#34;
+        Returns a vector pointing forward.
+        :return: The vector.
+        &#34;&#34;&#34;
+        return Vec2(0, 1)
+
+    @staticmethod
+    def backward():
+        &#34;&#34;&#34;
+        Returns a vector pointing backward.
+        :return: The vector.
+        &#34;&#34;&#34;
+        return Vec2(0, -1)
+
+    @staticmethod
+    def max(a: &#34;Vec2&#34;, b: &#34;Vec2&#34;):
+        &#34;&#34;&#34;
+        Returns the maximum of two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The maximum vector.
+        &#34;&#34;&#34;
+        return Vec2(max(a.x, b.x), max(a.y, b.y))
+
+    @staticmethod
+    def min(a: &#34;Vec2&#34;, b: &#34;Vec2&#34;):
+        &#34;&#34;&#34;
+        Returns the minimum of two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The minimum vector.
+        &#34;&#34;&#34;
+        return Vec2(min(a.x, b.x), min(a.y, b.y))
+
+    def lerp(self, other: &#34;Vec2&#34;, t):
+        &#34;&#34;&#34;
+        Returns a vector between two vectors.
+        :param other: The other vector.
+        :param t: The interpolation value.
+        :return: The interpolated vector.
+        &#34;&#34;&#34;
+        return Vec2(self.x + (other.x - self.x) * t, self.y + (other.y - self.y) * t)
+
+    def __add__(self, other):
+        return Vec2(self.x + other.x, self.y + other.y)
+
+    def __sub__(self, other):
+        return Vec2(self.x - other.x, self.y - other.y)
+
+    def __mul__(self, other):
+        return Vec2(self.x * other, self.y * other)
+
+    def __truediv__(self, other):
+        return Vec2(self.x / other, self.y / other)
+
+    def __floordiv__(self, other):
+        return Vec2(self.x // other, self.y // other)
+
+    def __mod__(self, other):
+        return Vec2(self.x % other, self.y % other)
+
+    def __str__(self):
+        return &#34;({}, {})&#34;.format(self.x, self.y)
+
+    def __repr__(self):
+        return &#34;({}, {})&#34;.format(self.x, self.y)
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+    def __ne__(self, other):
+        return self.x != other.x or self.y != other.y
+
+    def __gt__(self, other):
+        return self.x &gt; other.x and self.y &gt; other.y
+
+    def __ge__(self, other):
+        return self.x &gt;= other.x and self.y &gt;= other.y
+
+    def __lt__(self, other):
+        return self.x &lt; other.x and self.y &lt; other.y
+
+    def __le__(self, other):
+        return self.x &lt;= other.x and self.y &lt;= other.y
+
+    def __abs__(self):
+        return Vec2(abs(self.x), abs(self.y))
+
+    def __neg__(self):
+        return Vec2(-self.x, -self.y)
+
+    def __round__(self):
+        return Vec2(round(self.x), round(self.y))
+
+    def __floor__(self):
+        return Vec2(floor(self.x), floor(self.y))
+
+    def __ceil__(self):
+        return Vec2(ceil(self.x), ceil(self.y))
+
+    def __trunc__(self):
+        return Vec2(trunc(self.x), trunc(self.y))
+
+    def __index__(self):
+        return self.x, self.y
+
+    def __getitem__(self, index):
+        if index == 0:
+            return self.x
+        elif index == 1:
+            return self.y
+        else:
+            raise IndexError(&#34;Index out of range&#34;)
+
+    def __setitem__(self, index, value):
+        if index == 0:
+            self.x = value
+        elif index == 1:
+            self.y = value
+        else:
+            raise IndexError(&#34;Index out of range&#34;)
+
+    def __len__(self):
+        return 2
+
+    def __iter__(self):
+        yield self.x
+        yield self.y
+
+    def __contains__(self, item):
+        return item in (self.x, self.y)
+
+    def __hash__(self):
+        return hash((self.x, self.y))
+
+    def __bool__(self):
+        return self.x != 0 or self.y != 0
+
+    def __nonzero__(self):
+        return self.x != 0 or self.y != 0
+
+
+# Vector3
+class Vec3:
+    def __init__(self, x=0, y=0, z=0):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def __int__(self, other: &#34;Vec3&#34;):
+        self.x = other.x
+        self.y = other.y
+        self.z = other.z
+
+    def distance(self, other: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the distance between two vectors.
+        :param other: The other vector.
+        :return: The distance.
+        &#34;&#34;&#34;
+        return abs(self - other)
+
+    def scale(self, other):
+        &#34;&#34;&#34;
+        Returns the scaled vector.
+        :param other: The scale value.
+        :return: The scaled vector.
+        &#34;&#34;&#34;
+        return Vec3(self.x * other, self.y * other, self.z * other)
+
+    def reflect(self, other: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the reflected vector.
+        :param other: The normal vector.
+        :return: The reflected vector.
+        &#34;&#34;&#34;
+        return self - other * 2 * self.dot(other)
+
+    def angle_between(self, other: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the angle between two vectors.
+        :param other: The other vector.
+        :return: The angle.
+        &#34;&#34;&#34;
+        return acos(self.dot(other) / (self.length() * other.length()))
+
+    def normalize(self):
+        &#34;&#34;&#34;
+        Returns the normalized vector.
+        :return: The normalized vector.
+        &#34;&#34;&#34;
+        return self / self.length()
+
+    def dot(self, other: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the dot product of two vectors.
+        :param other: The other vector.
+        :return: The dot product.
+        &#34;&#34;&#34;
+        return self.x * other.x + self.y * other.y + self.z * other.z
+
+    def length(self):
+        &#34;&#34;&#34;
+        Returns the length of the vector.
+        :return: The length.
+        &#34;&#34;&#34;
+        return (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5
+
+    def length_sqr(self):
+        &#34;&#34;&#34;
+        Returns the length squared of the vector.
+        :return: The length squared.
+        &#34;&#34;&#34;
+        return self.x ** 2 + self.y ** 2 + self.z ** 2
+
+    def lerp(self, other: &#34;Vec3&#34;, t):
+        &#34;&#34;&#34;
+        Returns the linear interpolated vector.
+        :param other: The other vector.
+        :param t: The interpolation value.
+        :return: The linear interpolated vector.
+        &#34;&#34;&#34;
+        return self + (other - self) * t
+
+    @staticmethod
+    def cross(a, b):
+        &#34;&#34;&#34;
+        Returns the cross product of two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The cross product.
+        &#34;&#34;&#34;
+        return Vec3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x)
+
+    @staticmethod
+    def up():
+        &#34;&#34;&#34;
+        Returns the up vector.
+        :return: The up vector.
+        &#34;&#34;&#34;
+        return Vec3(0, 1, 0)
+
+    @staticmethod
+    def down():
+        &#34;&#34;&#34;
+        Returns the down vector.
+        :return: The down vector.
+        &#34;&#34;&#34;
+        return Vec3(0, -1, 0)
+
+    @staticmethod
+    def left():
+        &#34;&#34;&#34;
+        Returns the left vector.
+        :return: The left vector.
+        &#34;&#34;&#34;
+        return Vec3(-1, 0, 0)
+
+    @staticmethod
+    def right():
+        &#34;&#34;&#34;
+        Returns the right vector.
+        :return: The right vector.
+        &#34;&#34;&#34;
+        return Vec3(1, 0, 0)
+
+    @staticmethod
+    def forward():
+        &#34;&#34;&#34;
+        Returns the forward vector.
+        :return: The forward vector.
+        &#34;&#34;&#34;
+        return Vec3(0, 0, 1)
+
+    @staticmethod
+    def backward():
+        &#34;&#34;&#34;
+        Returns the backward vector.
+        :return: The backward vector.
+        &#34;&#34;&#34;
+        return Vec3(0, 0, -1)
+
+    @staticmethod
+    def zero():
+        &#34;&#34;&#34;
+        Returns the zero vector.
+        :return: The zero vector.
+        &#34;&#34;&#34;
+        return Vec3(0, 0, 0)
+
+    @staticmethod
+    def angle(a: &#34;Vec3&#34;, b: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the angle between two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The angle.
+        &#34;&#34;&#34;
+        return acos(a.dot(b) / (a.length() * b.length()))
+
+    @staticmethod
+    def max(a: &#34;Vec3&#34;, b: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the maximum of two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The maximum vector.
+        &#34;&#34;&#34;
+        return Vec3(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z))
+
+    @staticmethod
+    def min(a: &#34;Vec3&#34;, b: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the minimum of two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The minimum vector.
+        &#34;&#34;&#34;
+        return Vec3(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z))
+
+    def __add__(self, other):
+        return Vec3(self.x + other.x, self.y + other.y, self.z + other.z)
+
+    def __sub__(self, other):
+        return Vec3(self.x - other.x, self.y - other.y, self.z - other.z)
+
+    def __mul__(self, other):
+        return Vec3(self.x * other, self.y * other, self.z * other)
+
+    def __truediv__(self, other):
+        return Vec3(self.x / other, self.y / other, self.z / other)
+
+    def __floordiv__(self, other):
+        return Vec3(self.x // other, self.y // other, self.z // other)
+
+    def __mod__(self, other):
+        return Vec3(self.x % other, self.y % other, self.z % other)
+
+    def __str__(self):
+        return &#34;({}, {}, {})&#34;.format(self.x, self.y, self.z)
+
+    def __repr__(self):
+        return &#34;({}, {}, {})&#34;.format(self.x, self.y, self.z)
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y and self.z == other.z
+
+    def __ne__(self, other):
+        return self.x != other.x or self.y != other.y or self.z != other.z
+
+    def __gt__(self, other):
+        return self.x &gt; other.x and self.y &gt; other.y and self.z &gt; other.z
+
+    def __ge__(self, other):
+        return self.x &gt;= other.x and self.y &gt;= other.y and self.z &gt;= other.z
+
+    def __lt__(self, other):
+        return self.x &lt; other.x and self.y &lt; other.y and self.z &lt; other.z
+
+    def __le__(self, other):
+        return self.x &lt;= other.x and self.y &lt;= other.y and self.z &lt;= other.z
+
+    def __abs__(self):
+        return Vec3(abs(self.x), abs(self.y), abs(self.z))
+
+    def __neg__(self):
+        return Vec3(-self.x, -self.y, -self.z)
+
+    def __round__(self):
+        return Vec3(round(self.x), round(self.y), round(self.z))
+
+    def __floor__(self):
+        return Vec3(floor(self.x), floor(self.y), floor(self.z))
+
+    def __ceil__(self):
+        return Vec3(ceil(self.x), ceil(self.y), ceil(self.z))
+
+    def __trunc__(self):
+        return Vec3(trunc(self.x), trunc(self.y), trunc(self.z))
+
+    def __index__(self):
+        return self.x, self.y, self.z
+
+    def __getitem__(self, index):
+        if index == 0:
+            return self.x
+        elif index == 1:
+            return self.y
+        elif index == 2:
+            return self.z
+        else:
+            raise IndexError(&#34;Index out of range&#34;)
+
+    def __setitem__(self, index, value):
+        if index == 0:
+            self.x = value
+        elif index == 1:
+            self.y = value
+        elif index == 2:
+            self.z = value
+        else:
+            raise IndexError(&#34;Index out of range&#34;)
+
+    def __len__(self):
+        return 3
+
+    def __iter__(self):
+        yield self.x
+        yield self.y
+        yield self.z
+
+    def __contains__(self, item):
+        return item in (self.x, self.y, self.z)
+
+    def __hash__(self):
+        return hash((self.x, self.y, self.z))
+
+    def __bool__(self):
+        return self.x != 0 or self.y != 0 or self.z != 0
+
+    def __nonzero__(self):
+        return self.x != 0 or self.y != 0 or self.z != 0</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="pyopt_tools.pyvec.Vec2"><code class="flex name class">
+<span>class <span class="ident">Vec2</span></span>
+<span>(</span><span>x=0, y=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Vec2:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __int__(self, other: &#34;Vec2&#34;):
+        self.x = other.x
+        self.y = other.y
+
+    def distance(self, other: &#34;Vec2&#34;):
+        &#34;&#34;&#34;
+        Returns the distance between two points.
+        :param other: The other point.
+        :return: The distance.
+        &#34;&#34;&#34;
+        return abs(self - other)
+
+    def scale(self, other: &#34;Vec2&#34;):
+        &#34;&#34;&#34;
+        Returns the scaled vector.
+        :param other: The scaling vector.
+        :return: The scaled vector.
+        &#34;&#34;&#34;
+        return Vec2(self.x * other.x, self.y * other.y)
+
+    def reflect(self, normal):
+        &#34;&#34;&#34;
+        Returns the reflected vector.
+        :param normal: The normal vector.
+        :return: The reflected vector.
+        &#34;&#34;&#34;
+        return self - 2 * self.dot(normal) * normal
+
+    def angle_between(self, other):
+        &#34;&#34;&#34;
+        Returns the angle between two vectors.
+        :param other: The other vector.
+        :return: The angle.
+        &#34;&#34;&#34;
+        return acos(self.dot(other) / (self.length() * other.length()))
+
+    @property
+    def normalize(self):
+        &#34;&#34;&#34;
+        Returns a normalized vector.
+        :return: The normalized vector.
+        &#34;&#34;&#34;
+        return self / self.length()
+
+    def dot(self, other):
+        &#34;&#34;&#34;
+        Returns the dot product of two vectors.
+        :param other: The other vector.
+        :return: The dot product.
+        &#34;&#34;&#34;
+        return self.x * other.x + self.y * other.y
+
+    def length(self):
+        &#34;&#34;&#34;
+        Returns the length of the vector.
+        :return: The magnitude.
+        &#34;&#34;&#34;
+        return (self.x ** 2 + self.y ** 2) ** 0.5
+
+    def length_sqr(self):
+        &#34;&#34;&#34;
+        Returns the squared length of the vector.
+        :return: The squared magnitude.
+        &#34;&#34;&#34;
+        return self.x ** 2 + self.y ** 2
+
+    @staticmethod
+    def angle(a, b):
+        &#34;&#34;&#34;
+        Returns the angle between two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The angle.
+        &#34;&#34;&#34;
+        return acos(a.dot(b) / (a.length() * b.length()))
+
+    @staticmethod
+    def zero():
+        &#34;&#34;&#34;
+        Returns a zero vector.
+        :return: The zero vector.
+        &#34;&#34;&#34;
+        return Vec2(0, 0)
+
+    @staticmethod
+    def cross(a, b):
+        &#34;&#34;&#34;
+        Returns the cross product of two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The cross product.
+        &#34;&#34;&#34;
+        return a.x * b.y - a.y * b.x
+
+    @staticmethod
+    def up():
+        &#34;&#34;&#34;
+        Returns a vector pointing up.
+        :return: The vector.
+        &#34;&#34;&#34;
+        return Vec2(0, 1)
+
+    @staticmethod
+    def down():
+        &#34;&#34;&#34;
+        Returns a vector pointing down.
+        :return: The vector.
+        &#34;&#34;&#34;
+        return Vec2(0, -1)
+
+    @staticmethod
+    def right():
+        &#34;&#34;&#34;
+        Returns a vector pointing right.
+        :return: The vector.
+        &#34;&#34;&#34;
+        return Vec2(1, 0)
+
+    @staticmethod
+    def left():
+        &#34;&#34;&#34;
+        Returns a vector pointing left.
+        :return: The vector.
+        &#34;&#34;&#34;
+        return Vec2(-1, 0)
+
+    @staticmethod
+    def forward():
+        &#34;&#34;&#34;
+        Returns a vector pointing forward.
+        :return: The vector.
+        &#34;&#34;&#34;
+        return Vec2(0, 1)
+
+    @staticmethod
+    def backward():
+        &#34;&#34;&#34;
+        Returns a vector pointing backward.
+        :return: The vector.
+        &#34;&#34;&#34;
+        return Vec2(0, -1)
+
+    @staticmethod
+    def max(a: &#34;Vec2&#34;, b: &#34;Vec2&#34;):
+        &#34;&#34;&#34;
+        Returns the maximum of two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The maximum vector.
+        &#34;&#34;&#34;
+        return Vec2(max(a.x, b.x), max(a.y, b.y))
+
+    @staticmethod
+    def min(a: &#34;Vec2&#34;, b: &#34;Vec2&#34;):
+        &#34;&#34;&#34;
+        Returns the minimum of two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The minimum vector.
+        &#34;&#34;&#34;
+        return Vec2(min(a.x, b.x), min(a.y, b.y))
+
+    def lerp(self, other: &#34;Vec2&#34;, t):
+        &#34;&#34;&#34;
+        Returns a vector between two vectors.
+        :param other: The other vector.
+        :param t: The interpolation value.
+        :return: The interpolated vector.
+        &#34;&#34;&#34;
+        return Vec2(self.x + (other.x - self.x) * t, self.y + (other.y - self.y) * t)
+
+    def __add__(self, other):
+        return Vec2(self.x + other.x, self.y + other.y)
+
+    def __sub__(self, other):
+        return Vec2(self.x - other.x, self.y - other.y)
+
+    def __mul__(self, other):
+        return Vec2(self.x * other, self.y * other)
+
+    def __truediv__(self, other):
+        return Vec2(self.x / other, self.y / other)
+
+    def __floordiv__(self, other):
+        return Vec2(self.x // other, self.y // other)
+
+    def __mod__(self, other):
+        return Vec2(self.x % other, self.y % other)
+
+    def __str__(self):
+        return &#34;({}, {})&#34;.format(self.x, self.y)
+
+    def __repr__(self):
+        return &#34;({}, {})&#34;.format(self.x, self.y)
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+    def __ne__(self, other):
+        return self.x != other.x or self.y != other.y
+
+    def __gt__(self, other):
+        return self.x &gt; other.x and self.y &gt; other.y
+
+    def __ge__(self, other):
+        return self.x &gt;= other.x and self.y &gt;= other.y
+
+    def __lt__(self, other):
+        return self.x &lt; other.x and self.y &lt; other.y
+
+    def __le__(self, other):
+        return self.x &lt;= other.x and self.y &lt;= other.y
+
+    def __abs__(self):
+        return Vec2(abs(self.x), abs(self.y))
+
+    def __neg__(self):
+        return Vec2(-self.x, -self.y)
+
+    def __round__(self):
+        return Vec2(round(self.x), round(self.y))
+
+    def __floor__(self):
+        return Vec2(floor(self.x), floor(self.y))
+
+    def __ceil__(self):
+        return Vec2(ceil(self.x), ceil(self.y))
+
+    def __trunc__(self):
+        return Vec2(trunc(self.x), trunc(self.y))
+
+    def __index__(self):
+        return self.x, self.y
+
+    def __getitem__(self, index):
+        if index == 0:
+            return self.x
+        elif index == 1:
+            return self.y
+        else:
+            raise IndexError(&#34;Index out of range&#34;)
+
+    def __setitem__(self, index, value):
+        if index == 0:
+            self.x = value
+        elif index == 1:
+            self.y = value
+        else:
+            raise IndexError(&#34;Index out of range&#34;)
+
+    def __len__(self):
+        return 2
+
+    def __iter__(self):
+        yield self.x
+        yield self.y
+
+    def __contains__(self, item):
+        return item in (self.x, self.y)
+
+    def __hash__(self):
+        return hash((self.x, self.y))
+
+    def __bool__(self):
+        return self.x != 0 or self.y != 0
+
+    def __nonzero__(self):
+        return self.x != 0 or self.y != 0</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="pyopt_tools.pyvec.Vec2.angle"><code class="name flex">
+<span>def <span class="ident">angle</span></span>(<span>a, b)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the angle between two vectors.
+:param a: The first vector.
+:param b: The second vector.
+:return: The angle.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def angle(a, b):
+    &#34;&#34;&#34;
+    Returns the angle between two vectors.
+    :param a: The first vector.
+    :param b: The second vector.
+    :return: The angle.
+    &#34;&#34;&#34;
+    return acos(a.dot(b) / (a.length() * b.length()))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.backward"><code class="name flex">
+<span>def <span class="ident">backward</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a vector pointing backward.
+:return: The vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def backward():
+    &#34;&#34;&#34;
+    Returns a vector pointing backward.
+    :return: The vector.
+    &#34;&#34;&#34;
+    return Vec2(0, -1)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.cross"><code class="name flex">
+<span>def <span class="ident">cross</span></span>(<span>a, b)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the cross product of two vectors.
+:param a: The first vector.
+:param b: The second vector.
+:return: The cross product.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def cross(a, b):
+    &#34;&#34;&#34;
+    Returns the cross product of two vectors.
+    :param a: The first vector.
+    :param b: The second vector.
+    :return: The cross product.
+    &#34;&#34;&#34;
+    return a.x * b.y - a.y * b.x</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.down"><code class="name flex">
+<span>def <span class="ident">down</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a vector pointing down.
+:return: The vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def down():
+    &#34;&#34;&#34;
+    Returns a vector pointing down.
+    :return: The vector.
+    &#34;&#34;&#34;
+    return Vec2(0, -1)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a vector pointing forward.
+:return: The vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def forward():
+    &#34;&#34;&#34;
+    Returns a vector pointing forward.
+    :return: The vector.
+    &#34;&#34;&#34;
+    return Vec2(0, 1)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.left"><code class="name flex">
+<span>def <span class="ident">left</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a vector pointing left.
+:return: The vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def left():
+    &#34;&#34;&#34;
+    Returns a vector pointing left.
+    :return: The vector.
+    &#34;&#34;&#34;
+    return Vec2(-1, 0)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.max"><code class="name flex">
+<span>def <span class="ident">max</span></span>(<span>a: <a title="pyopt_tools.pyvec.Vec2" href="#pyopt_tools.pyvec.Vec2">Vec2</a>, b: <a title="pyopt_tools.pyvec.Vec2" href="#pyopt_tools.pyvec.Vec2">Vec2</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the maximum of two vectors.
+:param a: The first vector.
+:param b: The second vector.
+:return: The maximum vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def max(a: &#34;Vec2&#34;, b: &#34;Vec2&#34;):
+    &#34;&#34;&#34;
+    Returns the maximum of two vectors.
+    :param a: The first vector.
+    :param b: The second vector.
+    :return: The maximum vector.
+    &#34;&#34;&#34;
+    return Vec2(max(a.x, b.x), max(a.y, b.y))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.min"><code class="name flex">
+<span>def <span class="ident">min</span></span>(<span>a: <a title="pyopt_tools.pyvec.Vec2" href="#pyopt_tools.pyvec.Vec2">Vec2</a>, b: <a title="pyopt_tools.pyvec.Vec2" href="#pyopt_tools.pyvec.Vec2">Vec2</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the minimum of two vectors.
+:param a: The first vector.
+:param b: The second vector.
+:return: The minimum vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def min(a: &#34;Vec2&#34;, b: &#34;Vec2&#34;):
+    &#34;&#34;&#34;
+    Returns the minimum of two vectors.
+    :param a: The first vector.
+    :param b: The second vector.
+    :return: The minimum vector.
+    &#34;&#34;&#34;
+    return Vec2(min(a.x, b.x), min(a.y, b.y))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.right"><code class="name flex">
+<span>def <span class="ident">right</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a vector pointing right.
+:return: The vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def right():
+    &#34;&#34;&#34;
+    Returns a vector pointing right.
+    :return: The vector.
+    &#34;&#34;&#34;
+    return Vec2(1, 0)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.up"><code class="name flex">
+<span>def <span class="ident">up</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a vector pointing up.
+:return: The vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def up():
+    &#34;&#34;&#34;
+    Returns a vector pointing up.
+    :return: The vector.
+    &#34;&#34;&#34;
+    return Vec2(0, 1)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.zero"><code class="name flex">
+<span>def <span class="ident">zero</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a zero vector.
+:return: The zero vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def zero():
+    &#34;&#34;&#34;
+    Returns a zero vector.
+    :return: The zero vector.
+    &#34;&#34;&#34;
+    return Vec2(0, 0)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="pyopt_tools.pyvec.Vec2.normalize"><code class="name">var <span class="ident">normalize</span></code></dt>
+<dd>
+<div class="desc"><p>Returns a normalized vector.
+:return: The normalized vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def normalize(self):
+    &#34;&#34;&#34;
+    Returns a normalized vector.
+    :return: The normalized vector.
+    &#34;&#34;&#34;
+    return self / self.length()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="pyopt_tools.pyvec.Vec2.angle_between"><code class="name flex">
+<span>def <span class="ident">angle_between</span></span>(<span>self, other)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the angle between two vectors.
+:param other: The other vector.
+:return: The angle.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def angle_between(self, other):
+    &#34;&#34;&#34;
+    Returns the angle between two vectors.
+    :param other: The other vector.
+    :return: The angle.
+    &#34;&#34;&#34;
+    return acos(self.dot(other) / (self.length() * other.length()))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.distance"><code class="name flex">
+<span>def <span class="ident">distance</span></span>(<span>self, other: <a title="pyopt_tools.pyvec.Vec2" href="#pyopt_tools.pyvec.Vec2">Vec2</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the distance between two points.
+:param other: The other point.
+:return: The distance.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def distance(self, other: &#34;Vec2&#34;):
+    &#34;&#34;&#34;
+    Returns the distance between two points.
+    :param other: The other point.
+    :return: The distance.
+    &#34;&#34;&#34;
+    return abs(self - other)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.dot"><code class="name flex">
+<span>def <span class="ident">dot</span></span>(<span>self, other)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the dot product of two vectors.
+:param other: The other vector.
+:return: The dot product.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dot(self, other):
+    &#34;&#34;&#34;
+    Returns the dot product of two vectors.
+    :param other: The other vector.
+    :return: The dot product.
+    &#34;&#34;&#34;
+    return self.x * other.x + self.y * other.y</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.length"><code class="name flex">
+<span>def <span class="ident">length</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the length of the vector.
+:return: The magnitude.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def length(self):
+    &#34;&#34;&#34;
+    Returns the length of the vector.
+    :return: The magnitude.
+    &#34;&#34;&#34;
+    return (self.x ** 2 + self.y ** 2) ** 0.5</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.length_sqr"><code class="name flex">
+<span>def <span class="ident">length_sqr</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the squared length of the vector.
+:return: The squared magnitude.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def length_sqr(self):
+    &#34;&#34;&#34;
+    Returns the squared length of the vector.
+    :return: The squared magnitude.
+    &#34;&#34;&#34;
+    return self.x ** 2 + self.y ** 2</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.lerp"><code class="name flex">
+<span>def <span class="ident">lerp</span></span>(<span>self, other: <a title="pyopt_tools.pyvec.Vec2" href="#pyopt_tools.pyvec.Vec2">Vec2</a>, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a vector between two vectors.
+:param other: The other vector.
+:param t: The interpolation value.
+:return: The interpolated vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def lerp(self, other: &#34;Vec2&#34;, t):
+    &#34;&#34;&#34;
+    Returns a vector between two vectors.
+    :param other: The other vector.
+    :param t: The interpolation value.
+    :return: The interpolated vector.
+    &#34;&#34;&#34;
+    return Vec2(self.x + (other.x - self.x) * t, self.y + (other.y - self.y) * t)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.reflect"><code class="name flex">
+<span>def <span class="ident">reflect</span></span>(<span>self, normal)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the reflected vector.
+:param normal: The normal vector.
+:return: The reflected vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reflect(self, normal):
+    &#34;&#34;&#34;
+    Returns the reflected vector.
+    :param normal: The normal vector.
+    :return: The reflected vector.
+    &#34;&#34;&#34;
+    return self - 2 * self.dot(normal) * normal</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec2.scale"><code class="name flex">
+<span>def <span class="ident">scale</span></span>(<span>self, other: <a title="pyopt_tools.pyvec.Vec2" href="#pyopt_tools.pyvec.Vec2">Vec2</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the scaled vector.
+:param other: The scaling vector.
+:return: The scaled vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def scale(self, other: &#34;Vec2&#34;):
+    &#34;&#34;&#34;
+    Returns the scaled vector.
+    :param other: The scaling vector.
+    :return: The scaled vector.
+    &#34;&#34;&#34;
+    return Vec2(self.x * other.x, self.y * other.y)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3"><code class="flex name class">
+<span>class <span class="ident">Vec3</span></span>
+<span>(</span><span>x=0, y=0, z=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Vec3:
+    def __init__(self, x=0, y=0, z=0):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def __int__(self, other: &#34;Vec3&#34;):
+        self.x = other.x
+        self.y = other.y
+        self.z = other.z
+
+    def distance(self, other: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the distance between two vectors.
+        :param other: The other vector.
+        :return: The distance.
+        &#34;&#34;&#34;
+        return abs(self - other)
+
+    def scale(self, other):
+        &#34;&#34;&#34;
+        Returns the scaled vector.
+        :param other: The scale value.
+        :return: The scaled vector.
+        &#34;&#34;&#34;
+        return Vec3(self.x * other, self.y * other, self.z * other)
+
+    def reflect(self, other: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the reflected vector.
+        :param other: The normal vector.
+        :return: The reflected vector.
+        &#34;&#34;&#34;
+        return self - other * 2 * self.dot(other)
+
+    def angle_between(self, other: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the angle between two vectors.
+        :param other: The other vector.
+        :return: The angle.
+        &#34;&#34;&#34;
+        return acos(self.dot(other) / (self.length() * other.length()))
+
+    def normalize(self):
+        &#34;&#34;&#34;
+        Returns the normalized vector.
+        :return: The normalized vector.
+        &#34;&#34;&#34;
+        return self / self.length()
+
+    def dot(self, other: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the dot product of two vectors.
+        :param other: The other vector.
+        :return: The dot product.
+        &#34;&#34;&#34;
+        return self.x * other.x + self.y * other.y + self.z * other.z
+
+    def length(self):
+        &#34;&#34;&#34;
+        Returns the length of the vector.
+        :return: The length.
+        &#34;&#34;&#34;
+        return (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5
+
+    def length_sqr(self):
+        &#34;&#34;&#34;
+        Returns the length squared of the vector.
+        :return: The length squared.
+        &#34;&#34;&#34;
+        return self.x ** 2 + self.y ** 2 + self.z ** 2
+
+    def lerp(self, other: &#34;Vec3&#34;, t):
+        &#34;&#34;&#34;
+        Returns the linear interpolated vector.
+        :param other: The other vector.
+        :param t: The interpolation value.
+        :return: The linear interpolated vector.
+        &#34;&#34;&#34;
+        return self + (other - self) * t
+
+    @staticmethod
+    def cross(a, b):
+        &#34;&#34;&#34;
+        Returns the cross product of two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The cross product.
+        &#34;&#34;&#34;
+        return Vec3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x)
+
+    @staticmethod
+    def up():
+        &#34;&#34;&#34;
+        Returns the up vector.
+        :return: The up vector.
+        &#34;&#34;&#34;
+        return Vec3(0, 1, 0)
+
+    @staticmethod
+    def down():
+        &#34;&#34;&#34;
+        Returns the down vector.
+        :return: The down vector.
+        &#34;&#34;&#34;
+        return Vec3(0, -1, 0)
+
+    @staticmethod
+    def left():
+        &#34;&#34;&#34;
+        Returns the left vector.
+        :return: The left vector.
+        &#34;&#34;&#34;
+        return Vec3(-1, 0, 0)
+
+    @staticmethod
+    def right():
+        &#34;&#34;&#34;
+        Returns the right vector.
+        :return: The right vector.
+        &#34;&#34;&#34;
+        return Vec3(1, 0, 0)
+
+    @staticmethod
+    def forward():
+        &#34;&#34;&#34;
+        Returns the forward vector.
+        :return: The forward vector.
+        &#34;&#34;&#34;
+        return Vec3(0, 0, 1)
+
+    @staticmethod
+    def backward():
+        &#34;&#34;&#34;
+        Returns the backward vector.
+        :return: The backward vector.
+        &#34;&#34;&#34;
+        return Vec3(0, 0, -1)
+
+    @staticmethod
+    def zero():
+        &#34;&#34;&#34;
+        Returns the zero vector.
+        :return: The zero vector.
+        &#34;&#34;&#34;
+        return Vec3(0, 0, 0)
+
+    @staticmethod
+    def angle(a: &#34;Vec3&#34;, b: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the angle between two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The angle.
+        &#34;&#34;&#34;
+        return acos(a.dot(b) / (a.length() * b.length()))
+
+    @staticmethod
+    def max(a: &#34;Vec3&#34;, b: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the maximum of two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The maximum vector.
+        &#34;&#34;&#34;
+        return Vec3(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z))
+
+    @staticmethod
+    def min(a: &#34;Vec3&#34;, b: &#34;Vec3&#34;):
+        &#34;&#34;&#34;
+        Returns the minimum of two vectors.
+        :param a: The first vector.
+        :param b: The second vector.
+        :return: The minimum vector.
+        &#34;&#34;&#34;
+        return Vec3(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z))
+
+    def __add__(self, other):
+        return Vec3(self.x + other.x, self.y + other.y, self.z + other.z)
+
+    def __sub__(self, other):
+        return Vec3(self.x - other.x, self.y - other.y, self.z - other.z)
+
+    def __mul__(self, other):
+        return Vec3(self.x * other, self.y * other, self.z * other)
+
+    def __truediv__(self, other):
+        return Vec3(self.x / other, self.y / other, self.z / other)
+
+    def __floordiv__(self, other):
+        return Vec3(self.x // other, self.y // other, self.z // other)
+
+    def __mod__(self, other):
+        return Vec3(self.x % other, self.y % other, self.z % other)
+
+    def __str__(self):
+        return &#34;({}, {}, {})&#34;.format(self.x, self.y, self.z)
+
+    def __repr__(self):
+        return &#34;({}, {}, {})&#34;.format(self.x, self.y, self.z)
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y and self.z == other.z
+
+    def __ne__(self, other):
+        return self.x != other.x or self.y != other.y or self.z != other.z
+
+    def __gt__(self, other):
+        return self.x &gt; other.x and self.y &gt; other.y and self.z &gt; other.z
+
+    def __ge__(self, other):
+        return self.x &gt;= other.x and self.y &gt;= other.y and self.z &gt;= other.z
+
+    def __lt__(self, other):
+        return self.x &lt; other.x and self.y &lt; other.y and self.z &lt; other.z
+
+    def __le__(self, other):
+        return self.x &lt;= other.x and self.y &lt;= other.y and self.z &lt;= other.z
+
+    def __abs__(self):
+        return Vec3(abs(self.x), abs(self.y), abs(self.z))
+
+    def __neg__(self):
+        return Vec3(-self.x, -self.y, -self.z)
+
+    def __round__(self):
+        return Vec3(round(self.x), round(self.y), round(self.z))
+
+    def __floor__(self):
+        return Vec3(floor(self.x), floor(self.y), floor(self.z))
+
+    def __ceil__(self):
+        return Vec3(ceil(self.x), ceil(self.y), ceil(self.z))
+
+    def __trunc__(self):
+        return Vec3(trunc(self.x), trunc(self.y), trunc(self.z))
+
+    def __index__(self):
+        return self.x, self.y, self.z
+
+    def __getitem__(self, index):
+        if index == 0:
+            return self.x
+        elif index == 1:
+            return self.y
+        elif index == 2:
+            return self.z
+        else:
+            raise IndexError(&#34;Index out of range&#34;)
+
+    def __setitem__(self, index, value):
+        if index == 0:
+            self.x = value
+        elif index == 1:
+            self.y = value
+        elif index == 2:
+            self.z = value
+        else:
+            raise IndexError(&#34;Index out of range&#34;)
+
+    def __len__(self):
+        return 3
+
+    def __iter__(self):
+        yield self.x
+        yield self.y
+        yield self.z
+
+    def __contains__(self, item):
+        return item in (self.x, self.y, self.z)
+
+    def __hash__(self):
+        return hash((self.x, self.y, self.z))
+
+    def __bool__(self):
+        return self.x != 0 or self.y != 0 or self.z != 0
+
+    def __nonzero__(self):
+        return self.x != 0 or self.y != 0 or self.z != 0</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="pyopt_tools.pyvec.Vec3.angle"><code class="name flex">
+<span>def <span class="ident">angle</span></span>(<span>a: <a title="pyopt_tools.pyvec.Vec3" href="#pyopt_tools.pyvec.Vec3">Vec3</a>, b: <a title="pyopt_tools.pyvec.Vec3" href="#pyopt_tools.pyvec.Vec3">Vec3</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the angle between two vectors.
+:param a: The first vector.
+:param b: The second vector.
+:return: The angle.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def angle(a: &#34;Vec3&#34;, b: &#34;Vec3&#34;):
+    &#34;&#34;&#34;
+    Returns the angle between two vectors.
+    :param a: The first vector.
+    :param b: The second vector.
+    :return: The angle.
+    &#34;&#34;&#34;
+    return acos(a.dot(b) / (a.length() * b.length()))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.backward"><code class="name flex">
+<span>def <span class="ident">backward</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the backward vector.
+:return: The backward vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def backward():
+    &#34;&#34;&#34;
+    Returns the backward vector.
+    :return: The backward vector.
+    &#34;&#34;&#34;
+    return Vec3(0, 0, -1)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.cross"><code class="name flex">
+<span>def <span class="ident">cross</span></span>(<span>a, b)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the cross product of two vectors.
+:param a: The first vector.
+:param b: The second vector.
+:return: The cross product.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def cross(a, b):
+    &#34;&#34;&#34;
+    Returns the cross product of two vectors.
+    :param a: The first vector.
+    :param b: The second vector.
+    :return: The cross product.
+    &#34;&#34;&#34;
+    return Vec3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.down"><code class="name flex">
+<span>def <span class="ident">down</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the down vector.
+:return: The down vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def down():
+    &#34;&#34;&#34;
+    Returns the down vector.
+    :return: The down vector.
+    &#34;&#34;&#34;
+    return Vec3(0, -1, 0)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the forward vector.
+:return: The forward vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def forward():
+    &#34;&#34;&#34;
+    Returns the forward vector.
+    :return: The forward vector.
+    &#34;&#34;&#34;
+    return Vec3(0, 0, 1)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.left"><code class="name flex">
+<span>def <span class="ident">left</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the left vector.
+:return: The left vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def left():
+    &#34;&#34;&#34;
+    Returns the left vector.
+    :return: The left vector.
+    &#34;&#34;&#34;
+    return Vec3(-1, 0, 0)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.max"><code class="name flex">
+<span>def <span class="ident">max</span></span>(<span>a: <a title="pyopt_tools.pyvec.Vec3" href="#pyopt_tools.pyvec.Vec3">Vec3</a>, b: <a title="pyopt_tools.pyvec.Vec3" href="#pyopt_tools.pyvec.Vec3">Vec3</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the maximum of two vectors.
+:param a: The first vector.
+:param b: The second vector.
+:return: The maximum vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def max(a: &#34;Vec3&#34;, b: &#34;Vec3&#34;):
+    &#34;&#34;&#34;
+    Returns the maximum of two vectors.
+    :param a: The first vector.
+    :param b: The second vector.
+    :return: The maximum vector.
+    &#34;&#34;&#34;
+    return Vec3(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.min"><code class="name flex">
+<span>def <span class="ident">min</span></span>(<span>a: <a title="pyopt_tools.pyvec.Vec3" href="#pyopt_tools.pyvec.Vec3">Vec3</a>, b: <a title="pyopt_tools.pyvec.Vec3" href="#pyopt_tools.pyvec.Vec3">Vec3</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the minimum of two vectors.
+:param a: The first vector.
+:param b: The second vector.
+:return: The minimum vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def min(a: &#34;Vec3&#34;, b: &#34;Vec3&#34;):
+    &#34;&#34;&#34;
+    Returns the minimum of two vectors.
+    :param a: The first vector.
+    :param b: The second vector.
+    :return: The minimum vector.
+    &#34;&#34;&#34;
+    return Vec3(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.right"><code class="name flex">
+<span>def <span class="ident">right</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the right vector.
+:return: The right vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def right():
+    &#34;&#34;&#34;
+    Returns the right vector.
+    :return: The right vector.
+    &#34;&#34;&#34;
+    return Vec3(1, 0, 0)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.up"><code class="name flex">
+<span>def <span class="ident">up</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the up vector.
+:return: The up vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def up():
+    &#34;&#34;&#34;
+    Returns the up vector.
+    :return: The up vector.
+    &#34;&#34;&#34;
+    return Vec3(0, 1, 0)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.zero"><code class="name flex">
+<span>def <span class="ident">zero</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the zero vector.
+:return: The zero vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def zero():
+    &#34;&#34;&#34;
+    Returns the zero vector.
+    :return: The zero vector.
+    &#34;&#34;&#34;
+    return Vec3(0, 0, 0)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="pyopt_tools.pyvec.Vec3.angle_between"><code class="name flex">
+<span>def <span class="ident">angle_between</span></span>(<span>self, other: <a title="pyopt_tools.pyvec.Vec3" href="#pyopt_tools.pyvec.Vec3">Vec3</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the angle between two vectors.
+:param other: The other vector.
+:return: The angle.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def angle_between(self, other: &#34;Vec3&#34;):
+    &#34;&#34;&#34;
+    Returns the angle between two vectors.
+    :param other: The other vector.
+    :return: The angle.
+    &#34;&#34;&#34;
+    return acos(self.dot(other) / (self.length() * other.length()))</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.distance"><code class="name flex">
+<span>def <span class="ident">distance</span></span>(<span>self, other: <a title="pyopt_tools.pyvec.Vec3" href="#pyopt_tools.pyvec.Vec3">Vec3</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the distance between two vectors.
+:param other: The other vector.
+:return: The distance.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def distance(self, other: &#34;Vec3&#34;):
+    &#34;&#34;&#34;
+    Returns the distance between two vectors.
+    :param other: The other vector.
+    :return: The distance.
+    &#34;&#34;&#34;
+    return abs(self - other)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.dot"><code class="name flex">
+<span>def <span class="ident">dot</span></span>(<span>self, other: <a title="pyopt_tools.pyvec.Vec3" href="#pyopt_tools.pyvec.Vec3">Vec3</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the dot product of two vectors.
+:param other: The other vector.
+:return: The dot product.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dot(self, other: &#34;Vec3&#34;):
+    &#34;&#34;&#34;
+    Returns the dot product of two vectors.
+    :param other: The other vector.
+    :return: The dot product.
+    &#34;&#34;&#34;
+    return self.x * other.x + self.y * other.y + self.z * other.z</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.length"><code class="name flex">
+<span>def <span class="ident">length</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the length of the vector.
+:return: The length.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def length(self):
+    &#34;&#34;&#34;
+    Returns the length of the vector.
+    :return: The length.
+    &#34;&#34;&#34;
+    return (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.length_sqr"><code class="name flex">
+<span>def <span class="ident">length_sqr</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the length squared of the vector.
+:return: The length squared.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def length_sqr(self):
+    &#34;&#34;&#34;
+    Returns the length squared of the vector.
+    :return: The length squared.
+    &#34;&#34;&#34;
+    return self.x ** 2 + self.y ** 2 + self.z ** 2</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.lerp"><code class="name flex">
+<span>def <span class="ident">lerp</span></span>(<span>self, other: <a title="pyopt_tools.pyvec.Vec3" href="#pyopt_tools.pyvec.Vec3">Vec3</a>, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the linear interpolated vector.
+:param other: The other vector.
+:param t: The interpolation value.
+:return: The linear interpolated vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def lerp(self, other: &#34;Vec3&#34;, t):
+    &#34;&#34;&#34;
+    Returns the linear interpolated vector.
+    :param other: The other vector.
+    :param t: The interpolation value.
+    :return: The linear interpolated vector.
+    &#34;&#34;&#34;
+    return self + (other - self) * t</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.normalize"><code class="name flex">
+<span>def <span class="ident">normalize</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the normalized vector.
+:return: The normalized vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def normalize(self):
+    &#34;&#34;&#34;
+    Returns the normalized vector.
+    :return: The normalized vector.
+    &#34;&#34;&#34;
+    return self / self.length()</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.reflect"><code class="name flex">
+<span>def <span class="ident">reflect</span></span>(<span>self, other: <a title="pyopt_tools.pyvec.Vec3" href="#pyopt_tools.pyvec.Vec3">Vec3</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the reflected vector.
+:param other: The normal vector.
+:return: The reflected vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reflect(self, other: &#34;Vec3&#34;):
+    &#34;&#34;&#34;
+    Returns the reflected vector.
+    :param other: The normal vector.
+    :return: The reflected vector.
+    &#34;&#34;&#34;
+    return self - other * 2 * self.dot(other)</code></pre>
+</details>
+</dd>
+<dt id="pyopt_tools.pyvec.Vec3.scale"><code class="name flex">
+<span>def <span class="ident">scale</span></span>(<span>self, other)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the scaled vector.
+:param other: The scale value.
+:return: The scaled vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def scale(self, other):
+    &#34;&#34;&#34;
+    Returns the scaled vector.
+    :param other: The scale value.
+    :return: The scaled vector.
+    &#34;&#34;&#34;
+    return Vec3(self.x * other, self.y * other, self.z * other)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="pyopt_tools" href="index.html">pyopt_tools</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="pyopt_tools.pyvec.Vec2" href="#pyopt_tools.pyvec.Vec2">Vec2</a></code></h4>
+<ul class="two-column">
+<li><code><a title="pyopt_tools.pyvec.Vec2.angle" href="#pyopt_tools.pyvec.Vec2.angle">angle</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.angle_between" href="#pyopt_tools.pyvec.Vec2.angle_between">angle_between</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.backward" href="#pyopt_tools.pyvec.Vec2.backward">backward</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.cross" href="#pyopt_tools.pyvec.Vec2.cross">cross</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.distance" href="#pyopt_tools.pyvec.Vec2.distance">distance</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.dot" href="#pyopt_tools.pyvec.Vec2.dot">dot</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.down" href="#pyopt_tools.pyvec.Vec2.down">down</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.forward" href="#pyopt_tools.pyvec.Vec2.forward">forward</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.left" href="#pyopt_tools.pyvec.Vec2.left">left</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.length" href="#pyopt_tools.pyvec.Vec2.length">length</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.length_sqr" href="#pyopt_tools.pyvec.Vec2.length_sqr">length_sqr</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.lerp" href="#pyopt_tools.pyvec.Vec2.lerp">lerp</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.max" href="#pyopt_tools.pyvec.Vec2.max">max</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.min" href="#pyopt_tools.pyvec.Vec2.min">min</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.normalize" href="#pyopt_tools.pyvec.Vec2.normalize">normalize</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.reflect" href="#pyopt_tools.pyvec.Vec2.reflect">reflect</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.right" href="#pyopt_tools.pyvec.Vec2.right">right</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.scale" href="#pyopt_tools.pyvec.Vec2.scale">scale</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.up" href="#pyopt_tools.pyvec.Vec2.up">up</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec2.zero" href="#pyopt_tools.pyvec.Vec2.zero">zero</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pyopt_tools.pyvec.Vec3" href="#pyopt_tools.pyvec.Vec3">Vec3</a></code></h4>
+<ul class="two-column">
+<li><code><a title="pyopt_tools.pyvec.Vec3.angle" href="#pyopt_tools.pyvec.Vec3.angle">angle</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.angle_between" href="#pyopt_tools.pyvec.Vec3.angle_between">angle_between</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.backward" href="#pyopt_tools.pyvec.Vec3.backward">backward</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.cross" href="#pyopt_tools.pyvec.Vec3.cross">cross</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.distance" href="#pyopt_tools.pyvec.Vec3.distance">distance</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.dot" href="#pyopt_tools.pyvec.Vec3.dot">dot</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.down" href="#pyopt_tools.pyvec.Vec3.down">down</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.forward" href="#pyopt_tools.pyvec.Vec3.forward">forward</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.left" href="#pyopt_tools.pyvec.Vec3.left">left</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.length" href="#pyopt_tools.pyvec.Vec3.length">length</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.length_sqr" href="#pyopt_tools.pyvec.Vec3.length_sqr">length_sqr</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.lerp" href="#pyopt_tools.pyvec.Vec3.lerp">lerp</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.max" href="#pyopt_tools.pyvec.Vec3.max">max</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.min" href="#pyopt_tools.pyvec.Vec3.min">min</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.normalize" href="#pyopt_tools.pyvec.Vec3.normalize">normalize</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.reflect" href="#pyopt_tools.pyvec.Vec3.reflect">reflect</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.right" href="#pyopt_tools.pyvec.Vec3.right">right</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.scale" href="#pyopt_tools.pyvec.Vec3.scale">scale</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.up" href="#pyopt_tools.pyvec.Vec3.up">up</a></code></li>
+<li><code><a title="pyopt_tools.pyvec.Vec3.zero" href="#pyopt_tools.pyvec.Vec3.zero">zero</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
