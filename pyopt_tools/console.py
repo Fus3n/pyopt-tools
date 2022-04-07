@@ -3,10 +3,12 @@ import sys
 import itertools
 from threading import Thread
 
+
 class Loader:
     """
         Simple Command line loading animation creator
     """
+
     def __init__(self, load_sequence: list | tuple = None):
         """
         :param load_sequence: sequence to cycle through default sequence ['|', '/', '-', '|', '\']
@@ -21,6 +23,7 @@ class Loader:
         self._should_load = True
         self._getting_input = False
         self._input_message = ""
+
     def stop(self) -> None:
         """
             Stop the loading animation
@@ -28,7 +31,7 @@ class Loader:
         """
         self._should_load = False
 
-    def start(self, message: str="", delay: int|float=0.2, threaded: bool=False) -> None:
+    def start(self, message: str = "", delay: int | float = 0.2, threaded: bool = False) -> None:
         """
             Start the loading animation
             :param message: message to attach with the loading
@@ -53,4 +56,3 @@ class Loader:
             sys.stdout.write(f"\r{seq} {message}")
             sys.stdout.flush()
             time.sleep(delay)
-
