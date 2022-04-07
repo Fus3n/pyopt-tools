@@ -4,7 +4,8 @@ from pyopt_tools.pyvec import Vec2, Vec3
 from pyopt_tools import listools
 from pyopt_tools import file_tools
 from pyopt_tools.colors import Color
-
+from pyopt_tools.console import Loader
+import time
 
 # String Tools
 print("--" * 10 + "String Tools", "--" * 10)
@@ -86,7 +87,7 @@ print("--" * 10 + "File Tools", "--" * 10)
 print("file_tools.get_size", file_tools.get_size("pyopt_tools/string_tools.py"))
 print("file_tools.get_size", file_tools.get_size("pyopt_tools/string_tools.py", "bytes"))
 # find string in multiple files in the given folder
-result = file_tools.find_in_files("F:/Python Random Scripts/", "test string", ["py", "cup", "txt"])
+result = file_tools.find_in_files("F:/Random Script/", "test string", ["py", "cup", "txt"])
 for res in result:
     filename, line, string = res
     print("file_tools.find_in_files", repr(filename), line, repr(string))
@@ -96,7 +97,7 @@ print("\n")
 print("--" * 10 + "Colors", "--" * 10)
 
 color = Color(Color.PaleGreen)  # Color.LightBlue is tuple every static color is a tuple
-#another way: Color("FF0000")
+# another way: Color("FF0000")
 print("Color", color)
 print("Color.to_hex", color.to_hex())
 print("Color.to_rgb", color.to_rgb())
@@ -110,5 +111,11 @@ print("Color blue", color[2])
 print("Color MATHS!", Color(Color.Red) + Color(Color.Green))
 print("Color.hex_to_rgb", Color.hex_to_rgb("#ffffff"))
 
-
-
+# Console
+print("\n")
+print("--" * 10 + "Console", "--" * 10)
+print("console.Loader")
+loader = Loader(['-_-', '0_-', '-_0', '0_0'])
+loader.start(threaded=True)
+time.sleep(0.5)
+loader.stop()
