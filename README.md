@@ -1,3 +1,5 @@
+![PyPI](https://img.shields.io/pypi/v/pyopt-tools?color=green&label=pyopy-tools&logo=python&logoColor=green)
+
 # Pyopt-tools
 PyOpt-tools contains a set of mirco function most of these functions are easy but **most of us** don't want to waste time searching for "how to reverse a string in python" or "how to sort a list by type in python" but as you're here I am assuming you fall into "most of us" category.
 
